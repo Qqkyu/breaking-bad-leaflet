@@ -10,8 +10,14 @@ import Details from "modules/Details";
 import { changeTheme } from "library/common/actions/ThemeActions";
 
 import "./appStyles.scss";
+import { useEffect } from "react";
+import { BreakingBadApi } from "main/api";
 
 const App = () => {
+  useEffect(() => {
+    new BreakingBadApi().fetchAllData();
+  }, []);
+
   return (
     <div>
       <Router>

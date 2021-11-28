@@ -1,5 +1,5 @@
-import { CharactersAction, CharactersState } from "./characters-type";
-import { CharactersActionTypes } from "../actions/CharactersActions";
+import { CharactersAction, CharactersState } from "library/common/reducers/characters/characters-type";
+import { CharactersActionTypes } from "library/common/actions/CharactersActions";
 
 const initialState: CharactersState = {
   characters: [],

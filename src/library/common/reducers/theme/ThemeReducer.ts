@@ -1,6 +1,6 @@
-import { ThemeAction, ThemeState } from "./theme-type";
-import { Theme } from "../constants/theme";
-import { ThemeActionTypes } from "../actions/ThemeActions";
+import { ThemeAction, ThemeState } from "library/common/reducers/theme/theme-type";
+import { Theme } from "library/common/constants/theme";
+import { ThemeActionTypes } from "library/common/actions/ThemeActions";
 
 const initialState: ThemeState = {
   theme: Theme.Dark,

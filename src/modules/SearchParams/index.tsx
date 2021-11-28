@@ -1,5 +1,5 @@
 import { Theme } from "library/common/constants/theme";
-import { ThemeState } from "library/common/reducers/theme-type";
+import { ThemeState } from "library/common/reducers/theme/theme-type";
 import React from "react";
 import { Dispatch } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
