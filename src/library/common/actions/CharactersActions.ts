@@ -1,9 +1,8 @@
 import { character } from "../components/Character/character";
-import { apiMainPath, apiPaths } from "../constants/apiPaths";
-import { Dispatch } from "redux";
 
 export enum CharactersActionTypes {
   SET_CHARACTERS = "SET_CHARACTERS",
+  SET_RANDOM_CHARACTER = "SET_RANDOM_CHARACTER",
 }
 
 export function setCharacters(characters: character[]) {
@@ -13,12 +12,9 @@ export function setCharacters(characters: character[]) {
   };
 }
 
-export function fetchAndSetCharacters() {
-  const apiPath = apiMainPath + apiPaths.AllCharacters;
-
-  return async function (dispatch: Dispatch) {
-    const res = await fetch(apiPath);
-    const jsonRes = await res.json();
-    dispatch(setCharacters(jsonRes));
+export function setRandomCharacter(character: character) {
+  return {
+    type: CharactersActionTypes.SET_RANDOM_CHARACTER,
+    payload: character,
   };
 }

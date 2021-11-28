@@ -1,67 +1,145 @@
 import { store } from "main/store/store";
 import { ThunkDispatch } from "redux-thunk";
+import { Dispatch } from "redux";
+
 import { IAppState, IAppActions } from "main/store/type";
 
-import { character } from "library/common/components/Character/character";
-import { death } from "library/common/components/Death/death";
-import { episode } from "library/common/components/Episode/episode";
-import { quote } from "library/common/components/Quote/quote";
+import { setCharacters, setRandomCharacter } from "library/common/actions/CharactersActions";
+import { setQuotes, setRandomQuote } from "library/common/actions/QuotesActions";
+import { setDeaths, setRandomDeath } from "library/common/actions/DeathsActions";
+import { setEpisodes } from "library/common/actions/EpisodesActions";
 
-import { fetchAndSetCharacters } from "library/common/actions/CharactersActions";
-import { fetchAndSetEpisodes } from "library/common/actions/EpisodesActions";
-import { fetchAndSetDeaths } from "library/common/actions/DeathsActions";
-import { fetchAndSetQuotes } from "library/common/actions/QuotesActions";
+import { apiMainPath, apiPaths } from "library/common/constants/apiPaths";
 
 interface IBreakingBadApi {
-  getAllCharacters: () => character[];
-  getAllDeaths: () => death[];
-  getAllEpisodes: () => episode[];
-  getAllQuotes: () => quote[];
+  fetchAllCharacters: () => void;
+  fetchAllDeaths: () => void;
+  fetchAllEpisodes: () => void;
+  fetchAllQuotes: () => void;
 
-  /*
-  getRandomCharacter: () => character;
-  getRandomQuote: () => quote;
-  getRandomDeath: () => death;
-  */
+  fetchRandomCharacter: () => void;
+  fetchRandomQuote: () => void;
+  fetchRandomDeath: () => void;
 }
 
 export class BreakingBadApi implements IBreakingBadApi {
   public fetchAllData(): void {
-    this.getAllCharacters();
-    this.getAllDeaths();
-    this.getAllEpisodes();
-    this.getAllQuotes();
+    this.fetchAllCharacters();
+    this.fetchAllDeaths();
+    this.fetchAllEpisodes();
+    this.fetchAllQuotes();
+    this.fetchRandomCharacter();
+    this.fetchRandomQuote();
+    this.fetchRandomDeath();
   }
 
-  public getAllCharacters(): character[] {
+  public fetchAllCharacters(): void {
     const characters = store.getState().characters.characters;
     if (characters?.length === 0) {
-      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetCharacters());
+      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetCharacters());
     }
-    return store.getState().characters.characters;
   }
 
-  public getAllDeaths(): death[] {
+  public fetchAllDeaths(): void {
     const deaths = store.getState().deaths.deaths;
     if (deaths?.length === 0) {
-      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetDeaths());
+      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetDeaths());
     }
-    return store.getState().deaths.deaths;
   }
 
-  public getAllEpisodes(): episode[] {
+  public fetchAllEpisodes(): void {
     const episodes = store.getState().episodes.episodes;
     if (episodes?.length === 0) {
-      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetEpisodes());
+      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetEpisodes());
     }
-    return store.getState().episodes.episodes;
   }
 
-  public getAllQuotes(): quote[] {
+  public fetchAllQuotes(): void {
     const quotes = store.getState().quotes.quotes;
     if (quotes?.length === 0) {
-      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetQuotes());
+      (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetQuotes());
     }
-    return store.getState().quotes.quotes;
+  }
+
+  public fetchRandomCharacter(): void {
+    (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomCharacter());
+  }
+
+  public fetchRandomQuote(): void {
+    (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomQuote());
+  }
+
+  public fetchRandomDeath(): void {
+    (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomDeath());
+  }
+
+  private fetchAndSetCharacters() {
+    const apiPath = apiMainPath + apiPaths.AllCharacters;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setCharacters(jsonRes));
+    };
+  }
+
+  private fetchAndSetDeaths() {
+    const apiPath = apiMainPath + apiPaths.AllDeaths;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setDeaths(jsonRes));
+    };
+  }
+
+  private fetchAndSetEpisodes() {
+    const apiPath = apiMainPath + apiPaths.AllEpisodes;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setEpisodes(jsonRes));
+    };
+  }
+
+  private fetchAndSetQuotes() {
+    const apiPath = apiMainPath + apiPaths.AllQuotes;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setQuotes(jsonRes));
+    };
+  }
+
+  private fetchAndSetRandomCharacter() {
+    const apiPath = apiMainPath + apiPaths.RandomCharacter;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setRandomCharacter(jsonRes));
+    };
+  }
+
+  private fetchAndSetRandomQuote() {
+    const apiPath = apiMainPath + apiPaths.RandomQuote;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setRandomQuote(jsonRes));
+    };
+  }
+
+  private fetchAndSetRandomDeath() {
+    const apiPath = apiMainPath + apiPaths.RandomDeath;
+
+    return async function (dispatch: Dispatch) {
+      const res = await fetch(apiPath);
+      const jsonRes = await res.json();
+      dispatch(setRandomDeath(jsonRes));
+    };
   }
 }

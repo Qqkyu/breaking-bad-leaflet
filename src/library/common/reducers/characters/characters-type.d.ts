@@ -2,6 +2,7 @@ import { character } from "library/common/components/Character/character";
 
 type CharactersState = {
   characters: character[];
+  randomCharacter: character | undefined;
 };
 
 type CharactersAction = {
@@ -9,4 +10,13 @@ type CharactersAction = {
   payload: character[];
 };
 
-type DispatchType = (args: CharactersAction) => CharactersAction;
+type RandomCharacterAction = {
+  type: string;
+  payload: character[];
+};
+
+type CharactersActions = CharactersAction | RandomCharacterAction;
+
+type DispatchType =
+  | ((args: CharactersAction) => CharactersAction)
+  | ((args: RandomCharacterAction) => RandomCharacterAction);
