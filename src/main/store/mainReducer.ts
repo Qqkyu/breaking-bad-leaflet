@@ -7,11 +7,11 @@ import quotesReducer from "library/common/reducers/quotes/QuotesReducer";
 import themeReducer from "library/common/reducers/theme/ThemeReducer";
 
 const mainReducer = combineReducers({
-  charactersReducer,
-  episodesReducer,
-  deathsReducer,
-  quotesReducer,
-  themeReducer,
+  characters: charactersReducer,
+  episodes: episodesReducer,
+  deaths: deathsReducer,
+  quotes: quotesReducer,
+  theme: themeReducer,
 });
 
 export default mainReducer;

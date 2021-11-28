@@ -16,9 +16,9 @@ interface IBreakingBadApi {
   getAllCharacters: () => character[];
   getAllDeaths: () => death[];
   getAllEpisodes: () => episode[];
-  /*
   getAllQuotes: () => quote[];
 
+  /*
   getRandomCharacter: () => character;
   getRandomQuote: () => quote;
   getRandomDeath: () => death;
@@ -34,34 +34,34 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   public getAllCharacters(): character[] {
-    const characters = store.getState().charactersReducer.characters;
+    const characters = store.getState().characters.characters;
     if (characters?.length === 0) {
       (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetCharacters());
     }
-    return store.getState().charactersReducer.characters;
+    return store.getState().characters.characters;
   }
 
   public getAllDeaths(): death[] {
-    const deaths = store.getState().deathsReducer.deaths;
+    const deaths = store.getState().deaths.deaths;
     if (deaths?.length === 0) {
       (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetDeaths());
     }
-    return store.getState().deathsReducer.deaths;
+    return store.getState().deaths.deaths;
   }
 
   public getAllEpisodes(): episode[] {
-    const episodes = store.getState().episodesReducer.episodes;
+    const episodes = store.getState().episodes.episodes;
     if (episodes?.length === 0) {
       (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetEpisodes());
     }
-    return store.getState().episodesReducer.episodes;
+    return store.getState().episodes.episodes;
   }
 
   public getAllQuotes(): quote[] {
-    const quotes = store.getState().quotesReducer.quotes;
+    const quotes = store.getState().quotes.quotes;
     if (quotes?.length === 0) {
       (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(fetchAndSetQuotes());
     }
-    return store.getState().quotesReducer.quotes;
+    return store.getState().quotes.quotes;
   }
 }
