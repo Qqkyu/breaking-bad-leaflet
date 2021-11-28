@@ -1,4 +1,4 @@
-export interface death {
+export interface episode {
   id: number;
   title: string;
   season: number;
