@@ -1,15 +1,15 @@
-import { ThemeAction, ThemeState } from "./type";
+import { ThemeAction, ThemeState } from "./theme-type";
 import { Theme } from "../constants/theme";
-import { themeActionTypes } from "../actions/ThemeActions";
+import { ThemeActionTypes } from "../actions/ThemeActions";
 
 const initialState: ThemeState = {
-  theme: Theme.dark,
+  theme: Theme.Dark,
 };
 
-const reducer = (state: ThemeState = initialState, action: ThemeAction): ThemeState => {
+const themeReducer = (state: ThemeState = initialState, action: ThemeAction): ThemeState => {
   switch (action.type) {
-    case themeActionTypes.CHANGE_THEME:
-      const newTheme = state.theme === Theme.dark ? Theme.light : Theme.dark;
+    case ThemeActionTypes.CHANGE_THEME:
+      const newTheme = state.theme === Theme.Dark ? Theme.Light : Theme.Dark;
       return {
         ...state,
         theme: newTheme,
@@ -18,4 +18,4 @@ const reducer = (state: ThemeState = initialState, action: ThemeAction): ThemeSt
   return state;
 };
 
-export default reducer;
+export default themeReducer;

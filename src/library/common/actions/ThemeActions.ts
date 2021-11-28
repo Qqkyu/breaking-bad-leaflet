@@ -1,9 +1,9 @@
-export enum themeActionTypes {
+export enum ThemeActionTypes {
   CHANGE_THEME = "CHANGE_THEME",
 }
 
 export function changeTheme() {
   return {
-    type: themeActionTypes.CHANGE_THEME,
+    type: ThemeActionTypes.CHANGE_THEME,
   };
 }
