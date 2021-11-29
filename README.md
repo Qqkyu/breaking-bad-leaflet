@@ -11,7 +11,7 @@
 - Any changes to the inner storage of data don't imply changes to components, only proxy file has to be changed
 - Adding new data objects (e.g., character, episode) is easily done in proxy class
 
-##### Files: main/api
+##### File: main/api
 
 ### Singleton:
 
@@ -35,3 +35,5 @@
 - Encapsulates core data functionalities under simple and semantic methods
 - Extracts logic from components
 - Easier to extend
+
+##### File: main/data.index.ts
