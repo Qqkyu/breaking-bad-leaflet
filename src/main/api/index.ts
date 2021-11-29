@@ -9,7 +9,7 @@ import { setQuotes, setRandomQuote } from "library/common/actions/QuotesActions"
 import { setDeaths, setRandomDeath } from "library/common/actions/DeathsActions";
 import { setEpisodes } from "library/common/actions/EpisodesActions";
 
-import { apiMainPath, apiPaths } from "library/common/constants/apiPaths";
+import { apiMainPath, ApiPaths } from "library/common/constants/apiPaths";
 
 interface IBreakingBadApi {
   fetchAllCharacters: () => void;
@@ -22,7 +22,7 @@ interface IBreakingBadApi {
   fetchRandomDeath: () => void;
 }
 
-export class BreakingBadApi implements IBreakingBadApi {
+class BreakingBadApi implements IBreakingBadApi {
   public fetchAllData(): void {
     this.fetchAllCharacters();
     this.fetchAllDeaths();
@@ -74,7 +74,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetCharacters() {
-    const apiPath = apiMainPath + apiPaths.AllCharacters;
+    const apiPath = apiMainPath + ApiPaths.AllCharacters;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -84,7 +84,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetDeaths() {
-    const apiPath = apiMainPath + apiPaths.AllDeaths;
+    const apiPath = apiMainPath + ApiPaths.AllDeaths;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -94,7 +94,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetEpisodes() {
-    const apiPath = apiMainPath + apiPaths.AllEpisodes;
+    const apiPath = apiMainPath + ApiPaths.AllEpisodes;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -104,7 +104,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetQuotes() {
-    const apiPath = apiMainPath + apiPaths.AllQuotes;
+    const apiPath = apiMainPath + ApiPaths.AllQuotes;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -114,7 +114,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetRandomCharacter() {
-    const apiPath = apiMainPath + apiPaths.RandomCharacter;
+    const apiPath = apiMainPath + ApiPaths.RandomCharacter;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -124,7 +124,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetRandomQuote() {
-    const apiPath = apiMainPath + apiPaths.RandomQuote;
+    const apiPath = apiMainPath + ApiPaths.RandomQuote;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -134,7 +134,7 @@ export class BreakingBadApi implements IBreakingBadApi {
   }
 
   private fetchAndSetRandomDeath() {
-    const apiPath = apiMainPath + apiPaths.RandomDeath;
+    const apiPath = apiMainPath + ApiPaths.RandomDeath;
 
     return async function (dispatch: Dispatch) {
       const res = await fetch(apiPath);
@@ -143,3 +143,5 @@ export class BreakingBadApi implements IBreakingBadApi {
     };
   }
 }
+
+export default new BreakingBadApi();

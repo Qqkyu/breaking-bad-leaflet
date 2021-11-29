@@ -4,7 +4,7 @@
 
 ## Design patterns
 
-### Proxy:
+### Proxy (Api):
 
 - Used to simplify and speed up retrieving and accessing data
 - Provides simple checks which make sure that there aren't any unnecessary API calls
@@ -16,10 +16,22 @@
 ### Singleton:
 
 - Api Proxy:
-  - Global access provided with react context
+  - File only exports instantiated object, not the actual class
+  - Global access provided by exporting BreakingBadApi's instantiated object
   - Ensure that all components work with the same object to provide best performance (caching etc.)
+- Data facade:
+  - File only exports instantiated object, not the actual class (same as Api Proxy)
+  - Global access provided by exporting Data's instantiated object
+  - Ensure that all components work with the same object
 - Redux store:
   - Global access to the main store
   - All of the data which is shown to user stored in a store
 
-##### Files: library/common/contexts/ApiContext.ts, main/store.ts
+##### Files: main/api/index.ts, main/data/index.ts, main/store.ts
+
+### Facade (Data):
+
+- Used to provide a simplified interface for components
+- Encapsulates core data functionalities under simple and semantic methods
+- Extracts logic from components
+- Easier to extend

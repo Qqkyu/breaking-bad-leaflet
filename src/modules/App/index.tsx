@@ -7,18 +7,14 @@ import Quote from "library/common/components/Quote";
 import SearchParams from "modules/SearchParams";
 import Details from "modules/Details";
 
-import { changeTheme } from "library/common/actions/ThemeActions";
-
 import "./appStyles.scss";
-import { useContext, useEffect } from "react";
-import ApiContext from "library/common/contexts/ApiContext";
+import { useEffect } from "react";
+import api from "main/api";
 
 const App = () => {
-  const api = useContext(ApiContext);
-
   useEffect(() => {
     api.fetchAllData();
-  }, [api]);
+  }, []);
 
   return (
     <div>
@@ -34,7 +30,7 @@ const App = () => {
           <Route path="/details/episode/:id" element={<Episode />} />
           <Route path="/details/quote/:id" element={<Quote />} />
           <Route path="/details" element={<Details />} />
-          <Route path="/" element={<SearchParams changeTheme={changeTheme} />} />
+          <Route path="/" element={<SearchParams />} />
         </Routes>
       </Router>
     </div>

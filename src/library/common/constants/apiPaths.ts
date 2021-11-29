@@ -1,6 +1,6 @@
 export const apiMainPath = "https://www.breakingbadapi.com/api/";
 
-export enum apiPaths {
+export enum ApiPaths {
   AllCharacters = "characters",
   AllEpisodes = "episodes",
   AllQuotes = "quotes",
