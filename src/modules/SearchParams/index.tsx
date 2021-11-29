@@ -5,12 +5,13 @@ import { AvailableTypes } from "library/common/constants/searchParams";
 import { objects } from "library/common/constants/objects";
 import data from "main/data";
 
+import Results from "modules/Results";
+
 import "./searchParamsStyles.scss";
 
 const SearchParams = () => {
   const [searchParamType, setSearchParamType] = useState(SearchParamsType.Character);
   const [objects, setObjects] = useState([] as objects[]);
-  console.log(Object.values(SearchParamsType).filter((value) => typeof value === "string") as string[]);
 
   function requestResults() {
     setObjects(data.getDataByType(searchParamType));
@@ -42,6 +43,7 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
+      <Results type={searchParamType} objects={objects} />
     </div>
   );
 };

@@ -37,3 +37,12 @@
 - Easier to extend
 
 ##### File: main/data.index.ts
+
+### Composite:
+
+- Everything is represented as a component
+- Each component is a leaf of the tree and can compose multiple components together to create a new leaf (in that case it's a composite but is still a leaf of the tree)
+- Highly convenient to build scalable applications that utilize many objects
+- Reusable interface
+
+##### Files: modules/App.index.ts, modules/SearchParams/index.ts
