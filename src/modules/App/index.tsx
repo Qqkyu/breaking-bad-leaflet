@@ -10,13 +10,15 @@ import Details from "modules/Details";
 import { changeTheme } from "library/common/actions/ThemeActions";
 
 import "./appStyles.scss";
-import { useEffect } from "react";
-import { BreakingBadApi } from "main/api";
+import { useContext, useEffect } from "react";
+import ApiContext from "library/common/contexts/ApiContext";
 
 const App = () => {
+  const api = useContext(ApiContext);
+
   useEffect(() => {
-    new BreakingBadApi().fetchAllData();
-  }, []);
+    api.fetchAllData();
+  }, [api]);
 
   return (
     <div>
