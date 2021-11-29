@@ -12,3 +12,14 @@
 - Adding new data objects (e.g., character, episode) is easily done in proxy class
 
 ##### Files: main/api
+
+### Singleton:
+
+- Api Proxy:
+  - Global access provided with react context
+  - Ensure that all components work with the same object to provide best performance (caching etc.)
+- Redux store:
+  - Global access to the main store
+  - All of the data which is shown to user stored in a store
+
+##### Files: library/common/contexts/ApiContext.ts, main/store.ts
