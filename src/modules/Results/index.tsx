@@ -19,14 +19,15 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
       {!objects.length ? (
         <h1>No Objects Found</h1>
       ) : (
+        // eslint-disable-next-line array-callback-return
         objects.map((object) => {
-          // eslint-disable-line array-callback-return
           switch (type) {
             case SearchParamsType.Character:
               const characterObject = object as character;
               return (
                 <Character
-                  id={characterObject.id}
+                  char_id={characterObject.char_id}
+                  key={characterObject.char_id}
                   name={characterObject.name}
                   birthday={characterObject.birthday}
                   occupation={characterObject.occupation}
@@ -42,7 +43,8 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
               const deathObject = object as death;
               return (
                 <Death
-                  id={deathObject.id}
+                  death_id={deathObject.death_id}
+                  key={deathObject.death_id}
                   death={deathObject.death}
                   cause={deathObject.cause}
                   responsible={deathObject.responsible}
@@ -56,7 +58,8 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
               const episodeObject = object as episode;
               return (
                 <Episode
-                  id={episodeObject.id}
+                  episode_id={episodeObject.episode_id}
+                  key={episodeObject.episode_id}
                   title={episodeObject.title}
                   season={episodeObject.season}
                   episode={episodeObject.episode}
@@ -69,7 +72,8 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
               const quoteObject = object as quote;
               return (
                 <Quote
-                  id={quoteObject.id}
+                  quote_id={quoteObject.quote_id}
+                  key={quoteObject.quote_id}
                   quote={quoteObject.quote}
                   author={quoteObject.author}
                   series={quoteObject.series}

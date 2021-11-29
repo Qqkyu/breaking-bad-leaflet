@@ -4,12 +4,16 @@ import { episode } from "library/common/components/Episode/episode";
 import "./styles.scss";
 
 const Episode: FunctionComponent<episode> = (props) => {
-  const { id, title, season, episode, air_date, characters, series } = props;
+  const { title, season, episode, air_date, characters, series } = props;
 
   return (
     <div>
-      <h1>Episode</h1>
-      <h2>{title}</h2>
+      <h2>Title: {title}</h2>
+      <p>Season: {season}</p>
+      <p>Episode: {episode}</p>
+      <p>Air date: {air_date}</p>
+      <p>Characters: {characters}</p>
+      <p>Series: {series}</p>
     </div>
   );
 };

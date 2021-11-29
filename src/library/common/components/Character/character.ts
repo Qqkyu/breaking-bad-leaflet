@@ -1,5 +1,5 @@
 export interface character {
-  id: number;
+  char_id: number;
   name: string;
   birthday: string;
   occupation: string[];

@@ -1,5 +1,5 @@
 export interface death {
-  id: number;
+  death_id: number;
   death: string;
   cause: string;
   responsible: string;
