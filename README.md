@@ -26,6 +26,7 @@
 - Redux store:
   - Global access to the main store
   - All of the data which is shown to user stored in a store
+  - Ensure that there is only one place to look for different states or changes within application
 
 ##### Files: main/api/index.ts (Api Proxy), main/data/index.ts (Data facade), main/store.ts (Redux store)
 
@@ -54,3 +55,12 @@
 - Dispatch = Executor: dispatch actions to change the state of application
 
 ##### Files: main/store/store.ts (store), library/common/actions.ts (action), main/api/index.ts (dispatch)
+
+### Dependency injection (Results):
+
+- Results component doesn't display the results, instead it delegates the rendering to its child components (Character, Episode etc.)
+- Results depend on its child components for the rendering
+- Caller of Results sets this dependency - in this case, SearchParams (searchParamType and objects)
+- Changing the dependency is very easy - replace the child of Results by another component
+
+##### Files: modules/Results/index.ts, modules/SearchParams/index.ts
