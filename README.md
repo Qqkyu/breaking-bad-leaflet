@@ -27,7 +27,7 @@
   - Global access to the main store
   - All of the data which is shown to user stored in a store
 
-##### Files: main/api/index.ts, main/data/index.ts, main/store.ts
+##### Files: main/api/index.ts (Api Proxy), main/data/index.ts (Data facade), main/store.ts (Redux store)
 
 ### Facade (Data):
 
@@ -46,3 +46,11 @@
 - Reusable interface
 
 ##### Files: modules/App.index.ts, modules/SearchParams/index.ts
+
+### Command:
+
+- Store = Receiver: instantiated with reducers - descriptions on how the store change, given a command knows how to fulfill that request
+- Action = Command: actions contain description of the command (type) and parameters it needs to execute state change (payload)
+- Dispatch = Executor: dispatch actions to change the state of application
+
+##### Files: main/store/store.ts (store), library/common/actions.ts (action), main/api/index.ts (dispatch)
