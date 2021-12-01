@@ -9,6 +9,13 @@ import { setQuotes, setRandomQuote } from "library/common/actions/QuotesActions"
 import { setDeaths, setRandomDeath } from "library/common/actions/DeathsActions";
 import { setEpisodes } from "library/common/actions/EpisodesActions";
 
+import { character } from "library/common/components/Character/character";
+import { episode } from "library/common/components/Episode/episode";
+import { death } from "library/common/components/Death/death";
+import { quote } from "library/common/components/Quote/quote";
+
+import { isEmpty } from "library/utilities/utils";
+
 import { apiMainPath, ApiPaths } from "library/common/constants/apiPaths";
 
 interface IBreakingBadApi {
@@ -71,6 +78,34 @@ class BreakingBadApi implements IBreakingBadApi {
 
   public fetchRandomDeath(): void {
     (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomDeath());
+  }
+
+  public async fetchCharacterById(id: number): Promise<character | undefined> {
+    const apiPath = apiMainPath + ApiPaths.AllCharacters + id;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes[0];
+  }
+
+  public async fetchDeathById(id: number): Promise<death | undefined> {
+    const apiPath = apiMainPath + ApiPaths.AllDeaths + id;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes[0];
+  }
+
+  public async fetchEpisodeById(id: number): Promise<episode | undefined> {
+    const apiPath = apiMainPath + ApiPaths.AllEpisodes + id;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes[0];
+  }
+
+  public async fetchQuoteById(id: number): Promise<quote | undefined> {
+    const apiPath = apiMainPath + ApiPaths.AllQuotes + id;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes[0];
   }
 
   private fetchAndSetCharacters() {

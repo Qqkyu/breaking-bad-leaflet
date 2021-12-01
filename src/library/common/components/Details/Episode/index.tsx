@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import data from "main/data";
+import Episode from "library/common/components/Episode";
+import api from "main/api";
 
 import "./styles.scss";
-import { SearchParamsType } from "library/common/constants/searchParams";
-import Episode from "library/common/components/Episode";
 
 const EpisodeDetails = () => {
   const { id } = useParams();
@@ -16,9 +15,16 @@ const EpisodeDetails = () => {
     if (id === undefined || !numId) {
       throw TypeError("Invalid death id");
     }
-    const episodeData = data.getDataByTypeAndId(SearchParamsType.Episode, numId);
-    setState(Object.assign({ loading: false }, episodeData));
+    fetchEpisode(numId);
   }, [id]);
+
+  async function fetchEpisode(id: number): Promise<void> {
+    const episodeData = await api.fetchEpisodeById(id);
+    if (episodeData === undefined) {
+      throw RangeError("Invalid episode id");
+    }
+    setState(Object.assign({ loading: false }, episodeData));
+  }
 
   return (
     <div>

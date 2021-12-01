@@ -79,7 +79,7 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
             case SearchParamsType.Quote:
               const quoteObject = object as quote;
               return (
-                <Link to={`/quote/details/${quoteObject.quote_id}`}>
+                <Link to={`/quotes/details/${quoteObject.quote_id}`}>
                   <Quote
                     quote_id={quoteObject.quote_id}
                     key={quoteObject.quote_id}

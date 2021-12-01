@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import data from "main/data";
+import Character from "library/common/components/Character";
+import api from "main/api";
 
 import "./styles.scss";
-import { SearchParamsType } from "library/common/constants/searchParams";
-import Character from "library/common/components/Character";
 
 const CharacterDetails = () => {
   const { id } = useParams();
@@ -16,9 +15,16 @@ const CharacterDetails = () => {
     if (id === undefined || !numId) {
       throw TypeError("Invalid character id");
     }
-    const characterData = data.getDataByTypeAndId(SearchParamsType.Character, numId);
-    setState(Object.assign({ loading: false }, characterData));
+    fetchCharacter(numId);
   }, [id]);
+
+  async function fetchCharacter(id: number): Promise<void> {
+    const characterData = await api.fetchCharacterById(id);
+    if (characterData === undefined) {
+      throw RangeError("Invalid character id");
+    }
+    setState(Object.assign({ loading: false }, characterData));
+  }
 
   return (
     <div>

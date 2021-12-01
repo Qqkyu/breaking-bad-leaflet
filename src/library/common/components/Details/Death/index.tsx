@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import data from "main/data";
+import Death from "library/common/components/Death";
+import api from "main/api";
 
 import "./styles.scss";
-import { SearchParamsType } from "library/common/constants/searchParams";
-import Death from "library/common/components/Death";
 
 const DeathDetails = () => {
   const { id } = useParams();
@@ -16,9 +15,16 @@ const DeathDetails = () => {
     if (id === undefined || !numId) {
       throw TypeError("Invalid death id");
     }
-    const deathData = data.getDataByTypeAndId(SearchParamsType.Death, numId);
-    setState(Object.assign({ loading: false }, deathData));
+    fetchDeath(numId);
   }, [id]);
+
+  async function fetchDeath(id: number): Promise<void> {
+    const deathData = await api.fetchDeathById(id);
+    if (deathData === undefined) {
+      throw RangeError("Invalid death id");
+    }
+    setState(Object.assign({ loading: false }, deathData));
+  }
 
   return (
     <div>
