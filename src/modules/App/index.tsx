@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 import SearchParams from "modules/SearchParams";
-import Details from "modules/Details";
+import CharacterDetails from "library/common/components/Details/Character";
+import EpisodeDetails from "library/common/components/Details/Episode";
+import DeathDetails from "library/common/components/Details/Death";
+import QuoteDetails from "library/common/components/Details/Quote";
 
 import "./appStyles.scss";
 import { useEffect } from "react";
@@ -21,7 +24,10 @@ const App = () => {
           </Link>
         </header>
         <Routes>
-          <Route path="/details" element={<Details />} />
+          <Route path="/characters/details/:id" element={<CharacterDetails />} />
+          <Route path="/episodes/details/:id" element={<EpisodeDetails />} />
+          <Route path="/deaths/details/:id" element={<DeathDetails />} />
+          <Route path="/quotes/details/:id" element={<QuoteDetails />} />
           <Route path="/" element={<SearchParams />} />
         </Routes>
       </Router>
