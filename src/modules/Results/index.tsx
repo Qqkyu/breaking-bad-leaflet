@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
@@ -13,9 +14,15 @@ import { episode } from "library/common/components/Episode/episode";
 import { quote } from "library/common/components/Quote/quote";
 import { death } from "library/common/components/Death/death";
 
+import data from "main/data";
+
 import "./resultsStyles.scss";
 
-const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }> = ({ type, objects }) => {
+const Results: FunctionComponent<{ type: SearchParamsType }> = ({ type }) => {
+  const [objects, setObjects] = useState([] as objects[]);
+
+  useEffect(() => setObjects(data.getDataByType(type)), [type]);
+
   return (
     <div>
       {!objects.length ? (
