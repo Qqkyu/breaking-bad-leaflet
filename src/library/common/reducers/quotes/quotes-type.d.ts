@@ -1,4 +1,4 @@
-import { quote } from "library/common/components/Quote/quote";
+import { quote } from "library/common/components/Main/Quote/quote";
 
 type QuotesState = {
   quotes: quote[];

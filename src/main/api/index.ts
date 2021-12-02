@@ -9,10 +9,10 @@ import { setQuotes, setRandomQuote } from "library/common/actions/QuotesActions"
 import { setDeaths, setRandomDeath } from "library/common/actions/DeathsActions";
 import { setEpisodes } from "library/common/actions/EpisodesActions";
 
-import { character } from "library/common/components/Character/character";
-import { episode } from "library/common/components/Episode/episode";
-import { death } from "library/common/components/Death/death";
-import { quote } from "library/common/components/Quote/quote";
+import { character } from "library/common/components/Main/Character/character";
+import { episode } from "library/common/components/Main/Episode/episode";
+import { death } from "library/common/components/Main/Death/death";
+import { quote } from "library/common/components/Main/Quote/quote";
 
 import { isEmpty } from "library/utilities/utils";
 

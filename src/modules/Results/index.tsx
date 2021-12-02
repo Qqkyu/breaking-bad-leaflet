@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { SearchParamsType } from "library/common/constants/searchParams";
 import { objects } from "library/common/constants/objects";
 
-import Character from "library/common/components/Character";
-import Episode from "library/common/components/Episode";
-import Quote from "library/common/components/Quote";
-import Death from "library/common/components/Death";
-import { character } from "library/common/components/Character/character";
-import { episode } from "library/common/components/Episode/episode";
-import { quote } from "library/common/components/Quote/quote";
-import { death } from "library/common/components/Death/death";
+import Character from "library/common/components/Main/Character";
+import Episode from "library/common/components/Main/Episode";
+import Quote from "library/common/components/Main/Quote";
+import Death from "library/common/components/Main/Death";
+import { character } from "library/common/components/Main/Character/character";
+import { episode } from "library/common/components/Main/Episode/episode";
+import { quote } from "library/common/components/Main/Quote/quote";
+import { death } from "library/common/components/Main/Death/death";
 
 import "./resultsStyles.scss";
 

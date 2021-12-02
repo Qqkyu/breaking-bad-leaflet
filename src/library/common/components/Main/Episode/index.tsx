@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { episode } from "library/common/components/Episode/episode";
+import { episode } from "library/common/components/Main/Episode/episode";
 
 import "./styles.scss";
 

@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { death } from "library/common/components/Death/death";
+import { death } from "library/common/components/Main/Death/death";
 
 import "./styles.scss";
 

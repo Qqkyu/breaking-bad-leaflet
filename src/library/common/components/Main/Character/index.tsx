@@ -1,4 +1,4 @@
-import { character } from "library/common/components/Character/character";
+import { character } from "library/common/components/Main/Character/character";
 import { FunctionComponent } from "react";
 
 import "./styles.scss";

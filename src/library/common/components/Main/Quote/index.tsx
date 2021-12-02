@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { quote } from "library/common/components/Quote/quote";
+import { quote } from "library/common/components/Main/Quote/quote";
 
 import "./styles.scss";
 

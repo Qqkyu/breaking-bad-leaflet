@@ -1,4 +1,4 @@
-import { episode } from "library/common/components/Episode/episode";
+import { episode } from "library/common/components/Main/Episode/episode";
 
 type EpisodesState = {
   episodes: episode[];

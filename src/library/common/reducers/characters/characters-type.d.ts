@@ -1,4 +1,4 @@
-import { character } from "library/common/components/Character/character";
+import { character } from "library/common/components/Main/Character/character";
 
 type CharactersState = {
   characters: character[];

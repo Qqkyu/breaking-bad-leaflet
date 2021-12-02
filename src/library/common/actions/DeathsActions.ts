@@ -1,4 +1,4 @@
-import { death } from "library/common/components/Death/death";
+import { death } from "library/common/components/Main/Death/death";
 
 export enum DeathsActionTypes {
   SET_DEATHS = "SET_DEATHS",

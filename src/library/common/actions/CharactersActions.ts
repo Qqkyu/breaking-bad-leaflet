@@ -1,4 +1,4 @@
-import { character } from "../components/Character/character";
+import { character } from "../components/Main/Character/character";
 
 export enum CharactersActionTypes {
   SET_CHARACTERS = "SET_CHARACTERS",

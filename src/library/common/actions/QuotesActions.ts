@@ -1,4 +1,4 @@
-import { quote } from "library/common/components/Quote/quote";
+import { quote } from "library/common/components/Main/Quote/quote";
 
 export enum QuotesActionTypes {
   SET_QUOTES = "SET_QUOTES",

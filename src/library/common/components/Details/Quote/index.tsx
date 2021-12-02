@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import Quote from "library/common/components/Quote";
+import Quote from "library/common/components/Main/Quote";
 import api from "main/api";
 
 import "./styles.scss";

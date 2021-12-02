@@ -1,6 +1,6 @@
 import { DeathsActions, DeathsState } from "library/common/reducers/deaths/deaths-type";
 import { DeathsActionTypes } from "library/common/actions/DeathsActions";
-import { death } from "library/common/components/Death/death";
+import { death } from "library/common/components/Main/Death/death";
 
 const initialState: DeathsState = {
   deaths: [],

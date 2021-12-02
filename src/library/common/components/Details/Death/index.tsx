@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import Death from "library/common/components/Death";
+import Death from "library/common/components/Main/Death";
 import api from "main/api";
 
 import "./styles.scss";

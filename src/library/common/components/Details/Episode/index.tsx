@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import Episode from "library/common/components/Episode";
+import Episode from "library/common/components/Main/Episode";
 import api from "main/api";
 
 import "./styles.scss";
