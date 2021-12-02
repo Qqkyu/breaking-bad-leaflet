@@ -88,10 +88,10 @@ class BreakingBadApi implements IBreakingBadApi {
   }
 
   public async fetchDeathById(id: number): Promise<death | undefined> {
-    const apiPath = apiMainPath + ApiPaths.AllDeaths + id;
+    const apiPath = apiMainPath + ApiPaths.AllDeaths;
     const res = await fetch(apiPath);
     const jsonRes = await res.json();
-    return isEmpty(jsonRes) ? undefined : jsonRes[0];
+    return isEmpty(jsonRes) ? undefined : jsonRes.find((d: death) => d.death_id === id);
   }
 
   public async fetchEpisodeById(id: number): Promise<episode | undefined> {
