@@ -6,7 +6,6 @@ import EpisodeDetails from "library/common/components/Details/Episode";
 import DeathDetails from "library/common/components/Details/Death";
 import QuoteDetails from "library/common/components/Details/Quote";
 import RandomCharacter from "library/common/components/RandomInfo/Character";
-import RandomEpisode from "library/common/components/RandomInfo/Episode";
 import RandomDeath from "library/common/components/RandomInfo/Death";
 import RandomQuote from "library/common/components/RandomInfo/Quote";
 import SearchParams from "modules/SearchParams";
@@ -33,7 +32,6 @@ const App = () => {
           <Route path="/deaths/details/:id" element={<DeathDetails />} />
           <Route path="/quotes/details/:id" element={<QuoteDetails />} />
           <Route path="/characters/random" element={<RandomCharacter />} />
-          <Route path="/episodes/random" element={<RandomEpisode />} />
           <Route path="/deaths/random" element={<RandomDeath />} />
           <Route path="/quotes/random" element={<RandomQuote />} />
           <Route path="/" element={<SearchParams />} />

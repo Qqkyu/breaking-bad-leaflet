@@ -4,9 +4,9 @@ import { Dispatch } from "redux";
 
 import { IAppState, IAppActions } from "main/store/type";
 
-import { setCharacters, setRandomCharacter } from "library/common/actions/CharactersActions";
-import { setQuotes, setRandomQuote } from "library/common/actions/QuotesActions";
-import { setDeaths, setRandomDeath } from "library/common/actions/DeathsActions";
+import { setCharacters } from "library/common/actions/CharactersActions";
+import { setQuotes } from "library/common/actions/QuotesActions";
+import { setDeaths } from "library/common/actions/DeathsActions";
 import { setEpisodes } from "library/common/actions/EpisodesActions";
 
 import { character } from "library/common/components/Main/Character/character";
@@ -68,16 +68,25 @@ class BreakingBadApi implements IBreakingBadApi {
     }
   }
 
-  public fetchRandomCharacter(): void {
-    (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomCharacter());
+  public async fetchRandomCharacter(): Promise<character | undefined> {
+    const apiPath = apiMainPath + ApiPaths.RandomCharacter;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes[0];
   }
 
-  public fetchRandomQuote(): void {
-    (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomQuote());
+  public async fetchRandomQuote(): Promise<quote | undefined> {
+    const apiPath = apiMainPath + ApiPaths.RandomQuote;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes[0];
   }
 
-  public fetchRandomDeath(): void {
-    (store.dispatch as ThunkDispatch<IAppState, unknown, IAppActions>)(this.fetchAndSetRandomDeath());
+  public async fetchRandomDeath(): Promise<death | undefined> {
+    const apiPath = apiMainPath + ApiPaths.RandomDeath;
+    const res = await fetch(apiPath);
+    const jsonRes = await res.json();
+    return isEmpty(jsonRes) ? undefined : jsonRes;
   }
 
   public async fetchCharacterById(id: number): Promise<character | undefined> {
@@ -145,36 +154,6 @@ class BreakingBadApi implements IBreakingBadApi {
       const res = await fetch(apiPath);
       const jsonRes = await res.json();
       dispatch(setQuotes(jsonRes));
-    };
-  }
-
-  private fetchAndSetRandomCharacter() {
-    const apiPath = apiMainPath + ApiPaths.RandomCharacter;
-
-    return async function (dispatch: Dispatch) {
-      const res = await fetch(apiPath);
-      const jsonRes = await res.json();
-      dispatch(setRandomCharacter(jsonRes));
-    };
-  }
-
-  private fetchAndSetRandomQuote() {
-    const apiPath = apiMainPath + ApiPaths.RandomQuote;
-
-    return async function (dispatch: Dispatch) {
-      const res = await fetch(apiPath);
-      const jsonRes = await res.json();
-      dispatch(setRandomQuote(jsonRes));
-    };
-  }
-
-  private fetchAndSetRandomDeath() {
-    const apiPath = apiMainPath + ApiPaths.RandomDeath;
-
-    return async function (dispatch: Dispatch) {
-      const res = await fetch(apiPath);
-      const jsonRes = await res.json();
-      dispatch(setRandomDeath(jsonRes));
     };
   }
 }

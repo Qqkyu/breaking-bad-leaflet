@@ -2,7 +2,6 @@ import { death } from "library/common/components/Main/Death/death";
 
 type DeathsState = {
   deaths: death[];
-  randomDeath: death | undefined;
 };
 
 type DeathsAction = {
@@ -10,11 +9,4 @@ type DeathsAction = {
   payload: death[];
 };
 
-type RandomDeathAction = {
-  type: string;
-  payload: death;
-};
-
-type DeathsActions = DeathsAction | RandomDeathAction;
-
-type DispatchType = ((args: DeathsAction) => DeathsAction) | ((args: RandomDeathAction) => RandomDeathAction);
+type DispatchType = (args: DeathsAction) => DeathsAction;

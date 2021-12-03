@@ -10,7 +10,7 @@ const Character: FunctionComponent<character> = (props) => {
     <figure>
       <img src={img} alt={name} />
       <figcaption>{name}</figcaption>
-      <p>Birthday: {birthday}</p>
+      <p>Birthday: {birthday ?? "Unknown"}</p>
       <p>Occupation: {occupation}</p>
       <p>Status: {status}</p>
       <p>Nickname: {nickname}</p>
