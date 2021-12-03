@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Header from "library/common/components/Header";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 import CharacterDetails from "library/common/components/Details/Character";
@@ -23,7 +24,7 @@ const App = () => {
       <Router>
         <header>
           <Link to="/">
-            <h1>Breaking Bad Leaflet</h1>
+            <Header />
           </Link>
         </header>
         <Routes>
