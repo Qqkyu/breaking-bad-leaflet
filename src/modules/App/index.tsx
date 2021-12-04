@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "library/common/components/Header";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import CharacterDetails from "library/common/components/Details/Character";
 import EpisodeDetails from "library/common/components/Details/Episode";
@@ -23,9 +23,7 @@ const App = () => {
     <div>
       <Router>
         <header>
-          <Link to="/">
-            <Header />
-          </Link>
+          <Header />
         </header>
         <Switch>
           <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />

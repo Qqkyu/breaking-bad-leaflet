@@ -1,6 +1,5 @@
 header {
-  padding: 1rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -11,5 +10,18 @@ nav ul {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  align-items: space-between;
+}
+
+nav li {
+  display: flex;
+  justify-content: center;
+  flex-basis: 33%;
+  margin-bottom: 0.5rem;
+}
+
+nav li:first-child {
+  flex-basis: 100%;
+  text-align: center;
+  height: 100px;
+  margin: 1rem;
 }
