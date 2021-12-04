@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "library/common/components/Header";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import CharacterDetails from "library/common/components/Details/Character";
 import EpisodeDetails from "library/common/components/Details/Episode";
@@ -27,16 +27,16 @@ const App = () => {
             <Header />
           </Link>
         </header>
-        <Routes>
-          <Route path="/characters/details/:id" element={<CharacterDetails />} />
-          <Route path="/episodes/details/:id" element={<EpisodeDetails />} />
-          <Route path="/deaths/details/:id" element={<DeathDetails />} />
-          <Route path="/quotes/details/:id" element={<QuoteDetails />} />
-          <Route path="/characters/random" element={<RandomCharacter />} />
-          <Route path="/deaths/random" element={<RandomDeath />} />
-          <Route path="/quotes/random" element={<RandomQuote />} />
-          <Route path="/" element={<SearchParams />} />
-        </Routes>
+        <Switch>
+          <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />
+          <Route path="/deaths/random" render={(props) => <RandomDeath {...props} key={Date.now()} />} />
+          <Route path="/quotes/random" render={(props) => <RandomQuote {...props} key={Date.now()} />} />
+          <Route path="/characters/:id" component={CharacterDetails} />
+          <Route path="/episodes/:id" component={EpisodeDetails} />
+          <Route path="/deaths/:id" component={DeathDetails} />
+          <Route path="/quotes/:id" component={QuoteDetails} />
+          <Route path="/" component={SearchParams} />
+        </Switch>
       </Router>
     </div>
   );

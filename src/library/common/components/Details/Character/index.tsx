@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 
 import Character from "library/common/components/Main/Character";
 import api from "main/api";
 
 import "./styles.scss";
 
-const CharacterDetails = () => {
-  const { id } = useParams();
+const CharacterDetails = ({ match }) => {
   const [state, setState] = useState({ loading: true });
 
   useEffect(() => {
-    const numId = Number(id);
-    if (id === undefined || !numId) {
+    const numId = Number(match.params.id);
+    if (match.params.id === undefined || !numId) {
       throw TypeError("Invalid character id");
     }
     fetchCharacter(numId);
-  }, [id]);
+  }, [match.params.id]);
 
   async function fetchCharacter(id: number): Promise<void> {
     const characterData = await api.fetchCharacterById(id);

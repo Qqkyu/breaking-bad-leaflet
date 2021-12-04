@@ -27,7 +27,7 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
             case SearchParamsType.Character:
               const characterObject = object as character;
               return (
-                <Link to={`/characters/details/${characterObject.char_id}`} key={`link-${characterObject.char_id}`}>
+                <Link to={`/characters/${characterObject.char_id}`} key={`link-${characterObject.char_id}`}>
                   <Character
                     char_id={characterObject.char_id}
                     key={characterObject.char_id}
@@ -46,7 +46,7 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
             case SearchParamsType.Death:
               const deathObject = object as death;
               return (
-                <Link to={`/deaths/details/${deathObject.death_id}`} key={`link-${deathObject.death_id}`}>
+                <Link to={`/deaths/${deathObject.death_id}`} key={`link-${deathObject.death_id}`}>
                   <Death
                     death_id={deathObject.death_id}
                     key={deathObject.death_id}
@@ -63,7 +63,7 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
             case SearchParamsType.Episode:
               const episodeObject = object as episode;
               return (
-                <Link to={`/episodes/details/${episodeObject.episode_id}`} key={`link-${episodeObject.episode_id}`}>
+                <Link to={`/episodes/${episodeObject.episode_id}`} key={`link-${episodeObject.episode_id}`}>
                   <Episode
                     episode_id={episodeObject.episode_id}
                     key={episodeObject.episode_id}
@@ -79,7 +79,7 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
             case SearchParamsType.Quote:
               const quoteObject = object as quote;
               return (
-                <Link to={`/quotes/details/${quoteObject.quote_id}`} key={`link-${quoteObject.quote_id}`}>
+                <Link to={`/quotes/${quoteObject.quote_id}`} key={`link-${quoteObject.quote_id}`}>
                   <Quote
                     quote_id={quoteObject.quote_id}
                     key={quoteObject.quote_id}

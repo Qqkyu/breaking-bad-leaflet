@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 
 import Death from "library/common/components/Main/Death";
 import api from "main/api";
 
 import "./styles.scss";
 
-const DeathDetails = () => {
-  const { id } = useParams();
+const DeathDetails = ({ match }) => {
   const [state, setState] = useState({ loading: true });
 
   useEffect(() => {
-    const numId = Number(id);
-    if (id === undefined || !numId) {
+    const numId = Number(match.params.id);
+    if (match.params.id === undefined || !numId) {
       throw TypeError("Invalid death id");
     }
     fetchDeath(numId);
-  }, [id]);
+  }, [match.params.id]);
 
   async function fetchDeath(id: number): Promise<void> {
     const deathData = await api.fetchDeathById(id);

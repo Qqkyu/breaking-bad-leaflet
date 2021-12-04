@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 
 import Quote from "library/common/components/Main/Quote";
 import api from "main/api";
 
 import "./styles.scss";
 
-const QuoteDetails = () => {
-  const { id } = useParams();
+const QuoteDetails = ({ match }) => {
   const [state, setState] = useState({ loading: true });
 
   useEffect(() => {
-    const numId = Number(id);
-    if (id === undefined || !numId) {
+    const numId = Number(match.params.id);
+    if (match.params.id === undefined || !numId) {
       throw TypeError("Invalid death id");
     }
     fetchQuote(numId);
-  }, [id]);
+  }, [match.params.id]);
 
   async function fetchQuote(id: number): Promise<void> {
     const quoteData = await api.fetchQuoteById(id);

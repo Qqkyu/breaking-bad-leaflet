@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 
 import Episode from "library/common/components/Main/Episode";
 import api from "main/api";
 
 import "./styles.scss";
 
-const EpisodeDetails = () => {
-  const { id } = useParams();
+const EpisodeDetails = ({ match }) => {
   const [state, setState] = useState({ loading: true });
 
   useEffect(() => {
-    const numId = Number(id);
-    if (id === undefined || !numId) {
+    const numId = Number(match.params.id);
+    if (match.params.id === undefined || !numId) {
       throw TypeError("Invalid death id");
     }
     fetchEpisode(numId);
-  }, [id]);
+  }, [match.params.id]);
 
   async function fetchEpisode(id: number): Promise<void> {
     const episodeData = await api.fetchEpisodeById(id);
