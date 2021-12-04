@@ -30,8 +30,10 @@ const SearchParams = () => {
           e.preventDefault();
         }}
       >
-        <label htmlFor="searchParamType">
+        <label htmlFor="searchParamType" className="search-param-type-label">
           Type
+        </label>
+        <div className="select-wrapper">
           <select
             id="searchParamType"
             value={searchParamType ? searchParamType : ""}
@@ -45,7 +47,7 @@ const SearchParams = () => {
               </option>
             ))}
           </select>
-        </label>
+        </div>
       </form>
       {searchParamType ? <Results type={searchParamType} objects={objects} /> : <></>}
     </div>

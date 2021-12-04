@@ -1,12 +1,16 @@
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+import { IAppState } from "main/store/type";
 import NavButton from "../NavButton";
 import Logo from "resources/images/logo";
 
 import "./styles.scss";
 
 const Header: FunctionComponent = () => {
+  const theme = useSelector((state: IAppState) => state.theme);
+  console.log(theme);
   return (
     <header className="header">
       <nav>
@@ -27,6 +31,7 @@ const Header: FunctionComponent = () => {
           </li>
         </ul>
       </nav>
+      <hr />
     </header>
   );
 };
