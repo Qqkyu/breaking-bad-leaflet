@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
-import Quote from "library/common/components/Main/Quote";
+import Loader from "library/common/components/Loader";
+import ObjectFactory from "library/common/components/ObjectFactory";
+import { quote } from "library/common/components/Main/Quote/quote";
+
+import { SearchParamsType } from "library/common/constants/searchParams";
 import api from "main/api";
 
 import "./styles.scss";
 
 const QuoteDetails = ({ match }) => {
-  const [state, setState] = useState({ loading: true });
+  const [quote, setQuote] = useState<quote | undefined>(undefined);
 
   useEffect(() => {
     const numId = Number(match.params.id);
@@ -21,26 +25,10 @@ const QuoteDetails = ({ match }) => {
     if (quoteData === undefined) {
       throw RangeError("Invalid quote id");
     }
-    setState(Object.assign({ loading: false }, quoteData));
+    setQuote(quoteData);
   }
 
-  return (
-    <div>
-      {state.loading ? (
-        <h2> Loading ... </h2>
-      ) : (
-        <div>
-          <Quote
-            quote_id={state["quote_id"]}
-            key={state["quote_id"]}
-            quote={state["quote"]}
-            author={state["author"]}
-            series={state["series"]}
-          />
-        </div>
-      )}
-    </div>
-  );
+  return quote === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Quote} object={quote} />;
 };
 
 export default QuoteDetails;

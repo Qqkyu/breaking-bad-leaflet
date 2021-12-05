@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
-import Episode from "library/common/components/Main/Episode";
+import Loader from "library/common/components/Loader";
+import ObjectFactory from "library/common/components/ObjectFactory";
+import { episode } from "library/common/components/Main/Episode/episode";
+
+import { SearchParamsType } from "library/common/constants/searchParams";
 import api from "main/api";
 
 import "./styles.scss";
 
 const EpisodeDetails = ({ match }) => {
-  const [state, setState] = useState({ loading: true });
+  const [episode, setEpisode] = useState<episode | undefined>(undefined);
 
   useEffect(() => {
     const numId = Number(match.params.id);
@@ -21,29 +25,10 @@ const EpisodeDetails = ({ match }) => {
     if (episodeData === undefined) {
       throw RangeError("Invalid episode id");
     }
-    setState(Object.assign({ loading: false }, episodeData));
+    setEpisode(episodeData);
   }
 
-  return (
-    <div>
-      {state.loading ? (
-        <h2> Loading ... </h2>
-      ) : (
-        <div>
-          <Episode
-            episode_id={state["episode_id"]}
-            key={state["episode_id"]}
-            title={state["title"]}
-            season={state["season"]}
-            episode={state["episode"]}
-            air_date={state["air_date"]}
-            characters={state["characters"]}
-            series={state["series"]}
-          />
-        </div>
-      )}
-    </div>
-  );
+  return episode === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Episode} object={episode} />;
 };
 
 export default EpisodeDetails;

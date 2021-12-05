@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Loader from "library/common/components/Loader";
 import ObjectFactory from "library/common/components/ObjectFactory";
 import { death } from "library/common/components/Main/Death/death";
 
@@ -27,7 +28,7 @@ const DeathDetails = ({ match }) => {
     setDeath(deathData);
   }
 
-  return death === undefined ? <h2> Loading ... </h2> : <ObjectFactory type={SearchParamsType.Death} object={death} />;
+  return death === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Death} object={death} />;
 };
 
 export default DeathDetails;

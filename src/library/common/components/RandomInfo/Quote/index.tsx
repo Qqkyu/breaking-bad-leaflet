@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Loader from "library/common/components/Loader";
 import ObjectFactory from "library/common/components/ObjectFactory";
 import { quote } from "library/common/components/Main/Quote/quote";
 
@@ -20,7 +21,7 @@ const RandomQuote = () => {
     setQuote(quoteData);
   }
 
-  return quote === undefined ? <h2> Loading ... </h2> : <ObjectFactory type={SearchParamsType.Quote} object={quote} />;
+  return quote === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Quote} object={quote} />;
 };
 
 export default RandomQuote;

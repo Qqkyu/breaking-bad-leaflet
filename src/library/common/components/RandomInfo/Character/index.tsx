@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Loader from "library/common/components/Loader";
 import ObjectFactory from "library/common/components/ObjectFactory";
 import { character } from "library/common/components/Main/Character/character";
 
@@ -20,11 +21,7 @@ const RandomCharacter = () => {
     setCharacter(characterData);
   }
 
-  return character === undefined ? (
-    <h2> Loading ... </h2>
-  ) : (
-    <ObjectFactory type={SearchParamsType.Character} object={character} />
-  );
+  return character === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Character} object={character} />;
 };
 
 export default RandomCharacter;
