@@ -9,8 +9,8 @@ import Logo from "resources/images/logo";
 import "./styles.scss";
 
 const Header: FunctionComponent = () => {
-  const theme = useSelector((state: IAppState) => state.theme);
-  console.log(theme);
+  const theme = useSelector((state: IAppState) => state.theme); // eslint-disable-line @typescript-eslint/no-unused-vars
+
   return (
     <header className="header">
       <nav>

@@ -1,6 +1,6 @@
 # Breaking Bad Leaflet
 
-#### Website which uses _The Breaking Bad API_ (https://breakingbadapi.com/) to display information about Breaking Bad movie series.
+#### Website which uses [_The Breaking Bad API_](https://breakingbadapi.com/) to display information about Breaking Bad movie series.
 
 ## Design patterns
 
@@ -26,6 +26,7 @@
 - Redux store:
   - Global access to the main store
   - All of the data which is shown to user stored in a store
+  - Ease debugging, snapshotting and sending / restoring state from a server or a local storage
   - Ensure that there is only one place to look for different states or changes within application
 
 ##### Files: main/api/index.ts (Api Proxy), main/data/index.ts (Data facade), main/store.ts (Redux store)
@@ -64,3 +65,25 @@
 - Changing the dependency is very easy - replace the child of Results by another component
 
 ##### Files: modules/Results/index.ts, modules/SearchParams/index.ts
+
+### Observer:
+
+- React:
+  - The observers are the components holding the state
+  - The parent is the subject notifying the observers
+- Redux:
+  - Steps in when parent wants to pass the state to grandchild directly without having to re-render the intermediate child
+  - Any component in the app can observe any part of the store
+  - Component listens to a specific slice of the app state
+  - Whenever the slice of state this component is listening to changes, the component rerenders
+  - An observer is observing only the relevant slice of the app state instead of the entire app state (observer only updated when necessary)
+
+##### Files: library/common/components/Header/index.tsx
+
+### Factory:
+
+- Results component should not be concerned with what to render based on payload, hence need for a layer of abstraction to keep code clean
+- Instead of creating many if statemens factory that will dynamically create components based on the payload
+- Adding new types of objects to the application simplified (add component to ObjectFactory and other components will behave correctly automatically)
+
+##### Files: library/common/components/ObjectFactory/index.tsx, modules/Results/index.tsx
