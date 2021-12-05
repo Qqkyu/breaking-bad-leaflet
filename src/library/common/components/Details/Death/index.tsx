@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 
-import Death from "library/common/components/Main/Death";
+import ObjectFactory from "library/common/components/ObjectFactory";
+import { death } from "library/common/components/Main/Death/death";
+
+import { SearchParamsType } from "library/common/constants/searchParams";
 import api from "main/api";
 
 import "./styles.scss";
 
 const DeathDetails = ({ match }) => {
-  const [state, setState] = useState({ loading: true });
+  const [death, setDeath] = useState<death | undefined>(undefined);
 
   useEffect(() => {
     const numId = Number(match.params.id);
@@ -21,30 +24,10 @@ const DeathDetails = ({ match }) => {
     if (deathData === undefined) {
       throw RangeError("Invalid death id");
     }
-    setState(Object.assign({ loading: false }, deathData));
+    setDeath(deathData);
   }
 
-  return (
-    <div>
-      {state.loading ? (
-        <h2> Loading ... </h2>
-      ) : (
-        <div>
-          <Death
-            death_id={state["death_id"]}
-            key={state["death_id"]}
-            death={state["death"]}
-            cause={state["cause"]}
-            responsible={state["responsible"]}
-            last_words={state["last_words"]}
-            season={state["season"]}
-            episode={state["episode"]}
-            number_of_deaths={state["number_of_deaths"]}
-          />
-        </div>
-      )}
-    </div>
-  );
+  return death === undefined ? <h2> Loading ... </h2> : <ObjectFactory type={SearchParamsType.Death} object={death} />;
 };
 
 export default DeathDetails;

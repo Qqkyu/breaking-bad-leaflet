@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 
-import Character from "library/common/components/Main/Character";
+import ObjectFactory from "library/common/components/ObjectFactory";
+import { character } from "library/common/components/Main/Character/character";
+
+import { SearchParamsType } from "library/common/constants/searchParams";
 import api from "main/api";
 
 import "./styles.scss";
 
 const CharacterDetails = ({ match }) => {
-  const [state, setState] = useState({ loading: true });
+  const [character, setCharacter] = useState<character | undefined>(undefined);
 
   useEffect(() => {
     const numId = Number(match.params.id);
@@ -21,31 +24,13 @@ const CharacterDetails = ({ match }) => {
     if (characterData === undefined) {
       throw RangeError("Invalid character id");
     }
-    setState(Object.assign({ loading: false }, characterData));
+    setCharacter(characterData);
   }
 
-  return (
-    <div>
-      {state.loading ? (
-        <h2> Loading ... </h2>
-      ) : (
-        <div>
-          <Character
-            char_id={state["char_id"]}
-            key={state["char_id"]}
-            name={state["name"]}
-            birthday={state["birthday"]}
-            occupation={state["occupation"]}
-            img={state["img"]}
-            status={state["status"]}
-            nickname={state["nickname"]}
-            appearance={state["appearance"]}
-            portrayed={state["portrayed"]}
-            category={state["category"]}
-          />
-        </div>
-      )}
-    </div>
+  return character === undefined ? (
+    <h2> Loading ... </h2>
+  ) : (
+    <ObjectFactory type={SearchParamsType.Character} object={character} />
   );
 };
 

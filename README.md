@@ -85,5 +85,6 @@
 - Results component should not be concerned with what to render based on payload, hence need for a layer of abstraction to keep code clean
 - Instead of creating many if statemens factory that will dynamically create components based on the payload
 - Adding new types of objects to the application simplified (add component to ObjectFactory and other components will behave correctly automatically)
+- Reusable ObjectFactory component which results in significant code reduction (e.g. RandomInfo and Details components)
 
-##### Files: library/common/components/ObjectFactory/index.tsx, modules/Results/index.tsx
+##### Files: library/common/components/ObjectFactory/index.tsx, modules/Results/index.tsx, library/common/components/RandomInfo, library/common/components/Details

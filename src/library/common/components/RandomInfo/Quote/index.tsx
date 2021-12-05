@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 
-import Quote from "library/common/components/Main/Quote";
+import ObjectFactory from "library/common/components/ObjectFactory";
+import { quote } from "library/common/components/Main/Quote/quote";
+
+import { SearchParamsType } from "library/common/constants/searchParams";
 import api from "main/api";
 
 import "./styles.scss";
 
 const RandomQuote = () => {
-  const [state, setState] = useState({ loading: true });
+  const [quote, setQuote] = useState<quote | undefined>(undefined);
 
   useEffect(() => {
     fetchRandomQuote();
@@ -14,26 +17,10 @@ const RandomQuote = () => {
 
   async function fetchRandomQuote(): Promise<void> {
     const quoteData = await api.fetchRandomQuote();
-    setState(Object.assign({ loading: false }, quoteData));
+    setQuote(quoteData);
   }
 
-  return (
-    <div>
-      {state.loading ? (
-        <h2> Loading ... </h2>
-      ) : (
-        <div>
-          <Quote
-            quote_id={state["quote_id"]}
-            key={state["quote_id"]}
-            quote={state["quote"]}
-            author={state["author"]}
-            series={state["series"]}
-          />
-        </div>
-      )}
-    </div>
-  );
+  return quote === undefined ? <h2> Loading ... </h2> : <ObjectFactory type={SearchParamsType.Quote} object={quote} />;
 };
 
 export default RandomQuote;
