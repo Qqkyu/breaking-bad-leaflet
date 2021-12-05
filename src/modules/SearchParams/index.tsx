@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { SearchParamsType } from "library/common/constants/searchParams";
 import { AvailableTypes } from "library/common/constants/searchParams";
 import { objects } from "library/common/constants/objects";
+import { IAppState } from "main/store/type";
 import Results from "modules/Results";
 import data from "main/data";
 
 import "./searchParamsStyles.scss";
+import Loader from "library/common/components/Loader";
 
 const SearchParams = () => {
+  const theme = useSelector((state: IAppState) => ({
+    ...state.characters,
+    ...state.deaths,
+    ...state.episodes,
+    ...state.quotes,
+  }));
+  const [dataLoaded, setDataLoaded] = useState<boolean>(false);
   const [searchParamType, setSearchParamType] = useState<SearchParamsType | null>(null);
   const [objects, setObjects] = useState([] as objects[]);
+
+  useEffect(() => {
+    if (theme.characters.length && theme.deaths.length && theme.episodes.length && theme.quotes.length) {
+      setDataLoaded(true);
+    }
+  }, [theme]);
 
   function updateObjects(e: React.ChangeEvent<HTMLSelectElement>): void {
     if (e.target.value !== "") {
@@ -23,7 +39,9 @@ const SearchParams = () => {
     }
   }
 
-  return (
+  return !dataLoaded ? (
+    <Loader />
+  ) : (
     <div>
       <form
         onSubmit={(e) => {
