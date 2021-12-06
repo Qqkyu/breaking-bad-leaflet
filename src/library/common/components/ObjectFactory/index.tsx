@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
 
 import Character from "library/common/components/Main/Character";
 import Episode from "library/common/components/Main/Episode";
@@ -96,19 +95,17 @@ const ObjectFactory: FunctionComponent<props> = ({ type, object, minified }) => 
               pathname={pathname}
             />
           ) : (
-            <Link to={`/episodes/${episodeObject.episode_id}`} key={`link-${episodeObject.episode_id}`}>
-              <Episode
-                episode_id={episodeObject.episode_id}
-                key={episodeObject.episode_id}
-                title={episodeObject.title}
-                season={episodeObject.season}
-                episode={episodeObject.episode}
-                air_date={episodeObject.air_date}
-                characters={episodeObject.characters}
-                series={episodeObject.series}
-                pathname={pathname}
-              />
-            </Link>
+            <Episode
+              episode_id={episodeObject.episode_id}
+              key={episodeObject.episode_id}
+              title={episodeObject.title}
+              season={episodeObject.season}
+              episode={episodeObject.episode}
+              air_date={episodeObject.air_date}
+              characters={episodeObject.characters}
+              series={episodeObject.series}
+              pathname={pathname}
+            />
           )}
         </>
       );

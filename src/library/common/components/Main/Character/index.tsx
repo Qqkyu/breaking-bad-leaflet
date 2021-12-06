@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 import { character } from "library/common/components/Main/Character/character";
+import { mapArray } from "library/utilities/utils";
 
 import "./styles.scss";
 
@@ -18,11 +19,11 @@ const Character: FunctionComponent<character & { pathname: string }> = (props) =
           </Link>
         </figcaption>
         {birthday ? <p>Birthday: {birthday}</p> : <></>}
-        {occupation ? <p>Occupation: {occupation}</p> : <></>}
+        {occupation ? <p>Occupation: {mapArray(occupation)}</p> : <></>}
         {status ? <p>Status: {status}</p> : <></>}
         {nickname ? <p>Nickname: {nickname}</p> : <></>}
-        {appearance ? <p>Apperance: {appearance}</p> : <></>}
-        {portrayed ? <p>Porttrayed: {portrayed}</p> : <></>}
+        {appearance ? <p>Apperance: {mapArray(appearance)}</p> : <></>}
+        {portrayed ? <p>Portrayed: {portrayed}</p> : <></>}
         {category ? <p>Category: {category}</p> : <></>}
       </figure>
     </div>

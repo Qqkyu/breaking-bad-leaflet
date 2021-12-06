@@ -6,7 +6,11 @@
   justify-content: center;
 
   figure {
-    display: inline-block;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
     margin: 20px;
 
     img {
@@ -18,7 +22,7 @@
 
     figcaption {
       text-align: center;
-      font-size: x-large;
+      font-size: xx-large;
       color: $breakingBadGreen;
 
       p {

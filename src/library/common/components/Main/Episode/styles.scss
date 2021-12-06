@@ -1,8 +1,20 @@
 .episode-wrapper {
   margin: 20px;
   font-size: x-large;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+  span.episode {
+    font-size: xx-large;
+  }
 
   span.episode:hover {
     color: white;
+  }
+
+  p:nth-of-type(1) {
+    margin-top: 70px;
   }
 }
