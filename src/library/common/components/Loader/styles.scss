@@ -1,3 +1,5 @@
+@import "resources/styles/variables";
+
 .spinner {
   color: official;
   display: block;
@@ -18,7 +20,7 @@
   width: 6px;
   height: 18px;
   border-radius: 20%;
-  background: #1e4835;
+  background: $breakingBadGreen;
 }
 .spinner div:nth-child(1) {
   transform: rotate(0deg);
