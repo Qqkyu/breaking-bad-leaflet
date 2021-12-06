@@ -28,7 +28,11 @@ const CharacterDetails = ({ match }) => {
     setCharacter(characterData);
   }
 
-  return character === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Character} object={character} />;
+  return character === undefined ? (
+    <Loader />
+  ) : (
+    <ObjectFactory type={SearchParamsType.Character} object={character} minified={false} />
+  );
 };
 
 export default CharacterDetails;

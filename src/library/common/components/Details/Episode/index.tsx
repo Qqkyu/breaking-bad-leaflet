@@ -28,7 +28,11 @@ const EpisodeDetails = ({ match }) => {
     setEpisode(episodeData);
   }
 
-  return episode === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Episode} object={episode} />;
+  return episode === undefined ? (
+    <Loader />
+  ) : (
+    <ObjectFactory type={SearchParamsType.Episode} object={episode} minified={false} />
+  );
 };
 
 export default EpisodeDetails;

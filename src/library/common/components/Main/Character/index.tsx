@@ -1,23 +1,31 @@
-import { character } from "library/common/components/Main/Character/character";
 import { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
+
+import { character } from "library/common/components/Main/Character/character";
 
 import "./styles.scss";
 
-const Character: FunctionComponent<character> = (props) => {
-  const { name, birthday, occupation, img, status, nickname, appearance, portrayed, category } = props;
+const Character: FunctionComponent<character & { pathname: string }> = (props) => {
+  const { name, birthday, occupation, img, status, nickname, appearance, portrayed, category, pathname } = props;
 
   return (
-    <figure>
-      <img src={img} alt={name} />
-      <figcaption>{name}</figcaption>
-      <p>Birthday: {birthday ?? "Unknown"}</p>
-      <p>Occupation: {occupation}</p>
-      <p>Status: {status}</p>
-      <p>Nickname: {nickname}</p>
-      <p>Apperance: {appearance}</p>
-      <p>Porttrayed: {portrayed}</p>
-      <p>Category: {category}</p>
-    </figure>
+    <div className="figure-wrapper">
+      <figure>
+        <img src={img} alt={name} />
+        <figcaption>
+          <Link to={pathname}>
+            <p>{name}</p>
+          </Link>
+        </figcaption>
+        {birthday ? <p>Birthday: {birthday}</p> : <></>}
+        {occupation ? <p>Occupation: {occupation}</p> : <></>}
+        {status ? <p>Status: {status}</p> : <></>}
+        {nickname ? <p>Nickname: {nickname}</p> : <></>}
+        {appearance ? <p>Apperance: {appearance}</p> : <></>}
+        {portrayed ? <p>Porttrayed: {portrayed}</p> : <></>}
+        {category ? <p>Category: {category}</p> : <></>}
+      </figure>
+    </div>
   );
 };
 

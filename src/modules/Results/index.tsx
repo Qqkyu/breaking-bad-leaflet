@@ -13,9 +13,9 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
   }
 
   return (
-    <div>
+    <div className="results">
       {objects.map((object) => (
-        <ObjectFactory type={type} object={object} />
+        <ObjectFactory type={type} object={object} minified={true} />
       ))}
     </div>
   );

@@ -28,7 +28,11 @@ const DeathDetails = ({ match }) => {
     setDeath(deathData);
   }
 
-  return death === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Death} object={death} />;
+  return death === undefined ? (
+    <Loader />
+  ) : (
+    <ObjectFactory type={SearchParamsType.Death} object={death} minified={false} />
+  );
 };
 
 export default DeathDetails;

@@ -6,7 +6,7 @@ import "./styles.scss";
 const NavButton: FunctionComponent<{ pathname: string; text: string }> = ({ pathname, text }) => {
   return (
     <Link to={pathname}>
-      <button className="random-info-button">{text}</button>
+      <button className="nav-button">{text}</button>
     </Link>
   );
 };

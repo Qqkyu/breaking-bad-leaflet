@@ -1,0 +1,33 @@
+@import "resources/styles/variables";
+
+.figure-wrapper {
+  display: flex;
+  display: row wrap;
+  justify-content: center;
+
+  figure {
+    display: inline-block;
+    margin: 20px;
+
+    img {
+      display: block;
+      width: 400px;
+      height: 400px;
+      object-fit: scale-down;
+    }
+
+    figcaption {
+      text-align: center;
+      font-size: x-large;
+      color: $breakingBadGreen;
+
+      p {
+        display: inline-block;
+      }
+
+      p:hover {
+        color: $white;
+      }
+    }
+  }
+}

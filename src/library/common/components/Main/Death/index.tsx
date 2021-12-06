@@ -1,20 +1,24 @@
 import { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
+
 import { death } from "library/common/components/Main/Death/death";
 
 import "./styles.scss";
 
-const Death: FunctionComponent<death> = (props) => {
-  const { death, cause, responsible, last_words, season, episode, number_of_deaths } = props;
+const Death: FunctionComponent<death & { pathname: string }> = (props) => {
+  const { death, cause, responsible, last_words, season, episode, number_of_deaths, pathname } = props;
 
   return (
-    <div>
-      <h2>Death: {death}</h2>
-      <p>Cause: {cause}</p>
-      <p>Responsible: {responsible}</p>
-      <p>Last words: {last_words}</p>
-      <p>Season: {season}</p>
-      <p>Episode: {episode}</p>
-      <p>Number of deaths: {number_of_deaths}</p>
+    <div className="death-wrapper">
+      <Link to={pathname}>
+        <span className="death">{death}</span>
+      </Link>
+      {cause ? <p>Cause: {cause}</p> : <></>}
+      {responsible ? <p>Responsible: {responsible}</p> : <></>}
+      {last_words ? <p>Last words: {last_words}</p> : <></>}
+      {season ? <p>Season: {season}</p> : <></>}
+      {episode ? <p>Episode: {episode}</p> : <></>}
+      {number_of_deaths ? <p>Number of deaths: {number_of_deaths}</p> : <></>}
     </div>
   );
 };

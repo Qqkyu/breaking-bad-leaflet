@@ -1,33 +1,31 @@
 @import "resources/styles/variables";
 
-header {
-  .random-info-button {
-    display: inline-block;
-    padding: 0.35em 1.2em;
-    border: 0.1em solid $breakingBadGreen;
-    margin: 0 0.3em 0.3em 0;
-    border-radius: 0.12em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    color: $breakingBadGreen;
-    text-align: center;
-    transition: all 0.2s;
-    font-size: 16px;
-    font-family: sans-serif;
-    font-weight: 700;
-  }
+.nav-button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid $breakingBadGreen;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: $breakingBadGreen;
+  text-align: center;
+  transition: all 0.2s;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 700;
+}
 
-  .random-info-button:hover {
-    color: $white;
-    background-color: $breakingBadGreen;
-  }
+.nav-button:hover {
+  color: $white;
+  background-color: $breakingBadGreen;
+  cursor: pointer;
+}
 
-  @media all and (max-width: 30em) {
-    .random-info-button {
-      display: block;
-      margin: 0.4em auto;
-    }
+@media all and (max-width: 30em) {
+  .nav-button {
+    display: block;
+    margin: 0.4em auto;
   }
 }

@@ -13,12 +13,12 @@ import QuoteDetails from "library/common/components/Details/Quote";
 import RandomCharacter from "library/common/components/RandomInfo/Character";
 import RandomDeath from "library/common/components/RandomInfo/Death";
 import RandomQuote from "library/common/components/RandomInfo/Quote";
+import ThemeToggle from "library/common/components/ThemeToggle";
 import Header from "library/common/components/Header";
 import SearchParams from "modules/SearchParams";
 import api from "main/api";
 
 import "./appStyles.scss";
-import ThemeToggle from "library/common/components/ThemeToggle";
 
 const App = () => {
   const dispatch: Dispatch<ThemeAction> = useDispatch();

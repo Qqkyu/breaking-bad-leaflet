@@ -28,7 +28,11 @@ const QuoteDetails = ({ match }) => {
     setQuote(quoteData);
   }
 
-  return quote === undefined ? <Loader /> : <ObjectFactory type={SearchParamsType.Quote} object={quote} />;
+  return quote === undefined ? (
+    <Loader />
+  ) : (
+    <ObjectFactory type={SearchParamsType.Quote} object={quote} minified={false} />
+  );
 };
 
 export default QuoteDetails;
