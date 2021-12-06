@@ -1,16 +1,12 @@
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-import { IAppState } from "main/store/type";
-import NavButton from "../NavButton";
+import NavButton from "library/common/components/NavButton";
 import Logo from "resources/images/logo";
 
 import "./styles.scss";
 
 const Header: FunctionComponent = () => {
-  const theme = useSelector((state: IAppState) => state.theme); // eslint-disable-line @typescript-eslint/no-unused-vars
-
   return (
     <header className="header">
       <nav>
