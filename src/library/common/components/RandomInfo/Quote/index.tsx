@@ -5,9 +5,11 @@ import ObjectFactory from "library/common/components/ObjectFactory";
 import { quote } from "library/common/components/Main/Quote/quote";
 
 import { SearchParamsType } from "library/common/constants/searchParams";
-import api from "main/api";
+import BreakingBadApi from "main/api";
 
 import "./styles.scss";
+
+const api = BreakingBadApi.getInstance();
 
 const RandomQuote = () => {
   const [quote, setQuote] = useState<quote | undefined>(undefined);

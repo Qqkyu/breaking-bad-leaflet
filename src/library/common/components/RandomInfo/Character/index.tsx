@@ -5,9 +5,11 @@ import ObjectFactory from "library/common/components/ObjectFactory";
 import { character } from "library/common/components/Main/Character/character";
 
 import { SearchParamsType } from "library/common/constants/searchParams";
-import api from "main/api";
+import BreakingBadApi from "main/api";
 
 import "./styles.scss";
+
+const api = BreakingBadApi.getInstance();
 
 const RandomCharacter = () => {
   const [character, setCharacter] = useState<character | undefined>(undefined);

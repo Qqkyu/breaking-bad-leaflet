@@ -16,9 +16,11 @@ import RandomQuote from "library/common/components/RandomInfo/Quote";
 import ThemeToggle from "library/common/components/ThemeToggle";
 import Header from "library/common/components/Header";
 import SearchParams from "modules/SearchParams";
-import api from "main/api";
+import BreakingBadApi from "main/api";
 
 import "./appStyles.scss";
+
+const api = BreakingBadApi.getInstance();
 
 const App = () => {
   const dispatch: Dispatch<ThemeAction> = useDispatch();

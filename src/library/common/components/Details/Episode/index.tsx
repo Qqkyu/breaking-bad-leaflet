@@ -5,9 +5,11 @@ import ObjectFactory from "library/common/components/ObjectFactory";
 import { episode } from "library/common/components/Main/Episode/episode";
 
 import { SearchParamsType } from "library/common/constants/searchParams";
-import api from "main/api";
+import BreakingBadApi from "main/api";
 
 import "./styles.scss";
+
+const api = BreakingBadApi.getInstance();
 
 const EpisodeDetails = ({ match }) => {
   const [episode, setEpisode] = useState<episode | undefined>(undefined);

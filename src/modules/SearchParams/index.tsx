@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
+import Loader from "library/common/components/Loader";
 import { SearchParamsType } from "library/common/constants/searchParams";
 import { AvailableTypes } from "library/common/constants/searchParams";
 import { objects } from "library/common/constants/objects";
 import { IAppState } from "main/store/type";
 import Results from "modules/Results";
-import data from "main/data";
+import Data from "main/data";
 
 import "./searchParamsStyles.scss";
-import Loader from "library/common/components/Loader";
+
+const data = Data.getInstance();
 
 const SearchParams = () => {
   const theme = useSelector((state: IAppState) => ({

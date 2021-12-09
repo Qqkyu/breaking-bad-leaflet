@@ -30,6 +30,18 @@ interface IBreakingBadApi {
 }
 
 class BreakingBadApi implements IBreakingBadApi {
+  private static instance?: BreakingBadApi;
+
+  private constructor() {}
+
+  static getInstance() {
+    if (BreakingBadApi.instance) {
+      return BreakingBadApi.instance;
+    }
+    BreakingBadApi.instance = new BreakingBadApi();
+    return BreakingBadApi.instance;
+  }
+
   public fetchAllData(): void {
     this.fetchAllCharacters();
     this.fetchAllDeaths();
@@ -158,4 +170,4 @@ class BreakingBadApi implements IBreakingBadApi {
   }
 }
 
-export default new BreakingBadApi();
+export default BreakingBadApi;

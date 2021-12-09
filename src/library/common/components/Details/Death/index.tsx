@@ -5,9 +5,11 @@ import ObjectFactory from "library/common/components/ObjectFactory";
 import { death } from "library/common/components/Main/Death/death";
 
 import { SearchParamsType } from "library/common/constants/searchParams";
-import api from "main/api";
+import BreakingBadApi from "main/api";
 
 import "./styles.scss";
+
+const api = BreakingBadApi.getInstance();
 
 const DeathDetails = ({ match }) => {
   const [death, setDeath] = useState<death | undefined>(undefined);

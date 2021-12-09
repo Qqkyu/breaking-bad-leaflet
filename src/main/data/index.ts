@@ -3,6 +3,18 @@ import { objects } from "library/common/constants/objects";
 import { store } from "main/store/store";
 
 class Data {
+  private static instance?: Data;
+
+  private constructor() {}
+
+  static getInstance() {
+    if (Data.instance) {
+      return Data.instance;
+    }
+    Data.instance = new Data();
+    return Data.instance;
+  }
+
   public getDataByType(type: SearchParamsType): objects[] {
     const state = store.getState();
 
@@ -19,4 +31,4 @@ class Data {
   }
 }
 
-export default new Data();
+export default Data;

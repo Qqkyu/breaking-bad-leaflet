@@ -15,13 +15,16 @@
 
 ### Singleton:
 
+- Restrict class to have just one instance and ensure that it is globally accessible
 - Api Proxy:
-  - File only exports instantiated object, not the actual class
-  - Global access provided by exporting BreakingBadApi's instantiated object
+  - Create an instance of a class if it does not yet exist, otherwise, return the reference to an existing instance
+  - Restrict user from calling constructor directly by using private access modifier
+  - Global access provided by exporting BreakingBadApi class
   - Ensure that all components work with the same object to provide best performance (caching etc.)
 - Data facade:
-  - File only exports instantiated object, not the actual class (same as Api Proxy)
-  - Global access provided by exporting Data's instantiated object
+  - Create an instance of a class if it does not yet exist, otherwise, return the reference to an existing instance (same as Api Proxy)
+  - Restrict user from calling constructor directly by using private access modifier
+  - Global access provided by exporting Data class
   - Ensure that all components work with the same object
 - Redux store:
   - Global access to the main store
@@ -68,6 +71,7 @@
 
 ### Observer:
 
+- Subscription mechanisms notifying multiple objects about any events that happen to the object they're observing
 - React:
   - The observers are the components holding the state
   - The parent is the subject notifying the observers
