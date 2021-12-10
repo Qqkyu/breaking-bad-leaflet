@@ -1,8 +1,20 @@
-@import "resources/styles/variables";
+@import "resources/styles/variables", "resources/styles/color-themes";
 
+html,
 body {
-  background-color: black;
-  color: white;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 600px;
+  margin: 0;
+}
+
+.base {
+  min-height: 100vh;
+  @include themed() {
+    background-color: t($bg);
+    color: t($text);
+  }
 }
 
 a {

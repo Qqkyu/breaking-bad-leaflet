@@ -1,3 +1,5 @@
+@import "resources/styles/color-themes";
+
 .episode-wrapper {
   margin: 20px;
   font-size: x-large;
@@ -11,7 +13,9 @@
   }
 
   span.episode:hover {
-    color: white;
+    @include themed() {
+      color: t($text);
+    }
   }
 
   p:nth-of-type(1) {

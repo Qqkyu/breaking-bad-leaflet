@@ -1,0 +1,59 @@
+@import "resources/styles/variables";
+
+$bg: "bg";
+$text: "text";
+$btn-bg: "btn-bg";
+$btn-bg-hover: "btn-bg-hover";
+$text-hover: "text-hover";
+$link-hover: "link-hover";
+$shadow: "shadow";
+$linear-gradient-start: "linear-gradient-start";
+$linear-gradient-end: "linear-gradient-end";
+
+$themes: (
+  default: (
+    bg: $bg-light,
+    text: $text-light,
+    btn-bg: $btn-bg-light,
+    btn-bg-hover: $btn-bg-hover,
+    text-hover: $text-hover-light,
+    link-hover: $link-hover-light,
+    shadow: $shadow-light,
+    linear-gradient-start: $linear-gradient-start-light,
+    linear-gradient-end: $linear-gradient-end-light,
+  ),
+  dark: (
+    bg: $bg-dark,
+    text: $text-dark,
+    btn-bg: $btn-bg-dark,
+    btn-bg-hover: $btn-bg-hover,
+    text-hover: $text-hover-dark,
+    link-hover: $link-hover-dark,
+    shadow: $shadow-dark,
+    linear-gradient-start: $linear-gradient-start-dark,
+    linear-gradient-end: $linear-gradient-end-dark,
+  ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}

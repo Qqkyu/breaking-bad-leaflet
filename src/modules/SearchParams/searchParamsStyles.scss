@@ -1,4 +1,4 @@
-@import "resources/styles/variables";
+@import "resources/styles/variables", "resources/styles/color-themes";
 
 .search-param-type-label {
   display: block;
@@ -21,7 +21,6 @@
     font-size: 16px;
     font-family: sans-serif;
     font-weight: 700;
-    color: $breakingBadGreen;
     line-height: 1.3;
     padding: 0.6em 1.4em 0.5em 0.8em;
     width: 300px;
@@ -29,26 +28,23 @@
     box-sizing: border-box;
     margin-top: 0.5rem;
     margin-bottom: 2rem;
-    border: 1px solid $breakingBadGreen;
-    box-shadow: 0 1px 0 1px $breakingBadGreen;
     border-radius: 0.5em;
+    @include themed() {
+      border-color: t($shadow);
+      background-image: url("/resources/images/dropdown.svg"),
+        linear-gradient(to bottom, t($linear-gradient-start) 0%, t($linear-gradient-end) 100%);
+      background-color: t($bg);
+      color: t($text);
+    }
     appearance: none;
-    background-color: $white;
-    background-image: url("/resources/images/dropdown.svg"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
     background-size: 0.65em auto, 100%;
   }
-  select::-ms-expand {
-    display: none;
-  }
-  select:hover {
-    border-color: $breakingBadGreen;
-  }
   select:focus {
-    border-color: $breakingBadGreen;
-    box-shadow: 0 0 1px 3px $breakingBadGreen;
-    color: $breakingBadGreen;
+    @include themed() {
+      box-shadow: 0 0 1px 1px t($shadow);
+    }
     outline: none;
   }
   select option {

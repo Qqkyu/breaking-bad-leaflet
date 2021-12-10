@@ -1,4 +1,4 @@
-@import "resources/styles/variables";
+@import "resources/styles/variables", "resources/styles/color-themes";
 
 .figure-wrapper {
   display: flex;
@@ -30,7 +30,9 @@
       }
 
       p:hover {
-        color: $white;
+        @include themed() {
+          color: t($text);
+        }
       }
     }
   }

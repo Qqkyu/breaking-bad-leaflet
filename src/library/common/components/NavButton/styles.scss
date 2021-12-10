@@ -1,6 +1,10 @@
-@import "resources/styles/variables";
+@import "resources/styles/variables", "resources/styles/color-themes";
 
 .nav-button {
+  @include themed() {
+    background-color: t($btn-bg);
+    color: t($text);
+  }
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid $breakingBadGreen;
@@ -9,7 +13,6 @@
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: $breakingBadGreen;
   text-align: center;
   transition: all 0.2s;
   font-size: 16px;
@@ -18,7 +21,9 @@
 }
 
 .nav-button:hover {
-  color: $white;
+  @include themed() {
+    color: t($text-hover);
+  }
   background-color: $breakingBadGreen;
   cursor: pointer;
 }

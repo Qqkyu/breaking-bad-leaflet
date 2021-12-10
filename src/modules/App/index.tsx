@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 
 import { ThemeAction } from "library/common/reducers/theme/theme-type";
@@ -16,13 +16,16 @@ import RandomQuote from "library/common/components/RandomInfo/Quote";
 import ThemeToggle from "library/common/components/ThemeToggle";
 import Header from "library/common/components/Header";
 import SearchParams from "modules/SearchParams";
+import { IAppState } from "main/store/type";
 import BreakingBadApi from "main/api";
 
 import "./appStyles.scss";
+import { Theme } from "library/common/constants/theme";
 
 const api = BreakingBadApi.getInstance();
 
 const App = () => {
+  const theme = useSelector((state: IAppState) => state.theme.theme);
   const dispatch: Dispatch<ThemeAction> = useDispatch();
 
   useEffect(() => {
@@ -30,23 +33,25 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <Router>
-        <ThemeToggle changeTheme={() => dispatch(changeTheme())} />
-        <header>
-          <Header />
-        </header>
-        <Switch>
-          <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />
-          <Route path="/deaths/random" render={(props) => <RandomDeath {...props} key={Date.now()} />} />
-          <Route path="/quotes/random" render={(props) => <RandomQuote {...props} key={Date.now()} />} />
-          <Route path="/characters/:id" component={CharacterDetails} />
-          <Route path="/episodes/:id" component={EpisodeDetails} />
-          <Route path="/deaths/:id" component={DeathDetails} />
-          <Route path="/quotes/:id" component={QuoteDetails} />
-          <Route path="/" component={SearchParams} />
-        </Switch>
-      </Router>
+    <div className={"theme " + (theme === Theme.Light ? "theme-default" : "theme-dark")}>
+      <div className="base">
+        <Router>
+          <ThemeToggle changeTheme={() => dispatch(changeTheme())} />
+          <header>
+            <Header />
+          </header>
+          <Switch>
+            <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />
+            <Route path="/deaths/random" render={(props) => <RandomDeath {...props} key={Date.now()} />} />
+            <Route path="/quotes/random" render={(props) => <RandomQuote {...props} key={Date.now()} />} />
+            <Route path="/characters/:id" component={CharacterDetails} />
+            <Route path="/episodes/:id" component={EpisodeDetails} />
+            <Route path="/deaths/:id" component={DeathDetails} />
+            <Route path="/quotes/:id" component={QuoteDetails} />
+            <Route path="/" component={SearchParams} />
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 };

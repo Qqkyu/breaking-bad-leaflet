@@ -1,3 +1,33 @@
+/* main colors */
 $breakingBadGreen: #1e4835;
+$whiteSmoke: #f5f5f5;
+$jetBlack: #0e0e10;
 $white: #ffffff;
 $black: #000000;
+
+/* miscellaneous */
+$btn-bg-hover: $breakingBadGreen;
+$text-hover: $whiteSmoke;
+
+/* light theme variables */
+$bg-light: $whiteSmoke;
+$text-light: $black;
+$text-hover-light: $whiteSmoke;
+$btn-bg-light: $whiteSmoke;
+$link-hover-light: $black;
+$shadow-light: $black;
+$linear-gradient-start-light: $white;
+$linear-gradient-end-light: $whiteSmoke;
+
+/* dark theme variables */
+$bg-dark: $black;
+$text-dark: $whiteSmoke;
+$text-hover-dark: $black;
+$btn-bg-dark: $black;
+$link-hover-dark: $whiteSmoke;
+$shadow-dark: $white;
+$linear-gradient-start-dark: $black;
+$linear-gradient-end-dark: $jetBlack;
+
+/* do wyjebania */
+$white: #ffffff;
