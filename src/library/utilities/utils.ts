@@ -20,6 +20,10 @@ export function mapArray(entries: (string | number)[]) {
   return mappedArray;
 }
 
+export function createEpisodeInfo(title: string, season: number, episode: number) {
+  return `${title} (S${season}.E${episode})`;
+}
+
 export function filterObjects(type: SearchParamsType, objects: objects[], filter: string) {
   filter = filter.trim().toLowerCase();
   if (filter.length === 0) {
@@ -34,7 +38,9 @@ export function filterObjects(type: SearchParamsType, objects: objects[], filter
       return deaths.filter((death) => death.death.toLowerCase().includes(filter));
     case SearchParamsType.Episode:
       const episodes = objects as episode[];
-      return episodes.filter((episode) => episode.title.toLowerCase().includes(filter));
+      return episodes.filter((episode) =>
+        createEpisodeInfo(episode.title, episode.season, episode.episode).toLowerCase().includes(filter)
+      );
     case SearchParamsType.Quote:
       const quotes = objects as quote[];
       return quotes.filter((quote) => quote.quote.toLowerCase().includes(filter));
