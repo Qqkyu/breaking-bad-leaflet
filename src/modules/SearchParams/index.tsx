@@ -10,11 +10,12 @@ import Results from "modules/Results";
 import Data from "main/data";
 
 import "./searchParamsStyles.scss";
+import { filterObjects } from "library/utilities/utils";
 
 const data = Data.getInstance();
 
 const SearchParams = () => {
-  const theme = useSelector((state: IAppState) => ({
+  const state = useSelector((state: IAppState) => ({
     ...state.characters,
     ...state.deaths,
     ...state.episodes,
@@ -22,13 +23,21 @@ const SearchParams = () => {
   }));
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
   const [searchParamType, setSearchParamType] = useState<SearchParamsType | null>(null);
-  const [objects, setObjects] = useState([] as objects[]);
+  const [filter, setFilter] = useState<string>("");
+  const [objects, setObjects] = useState<objects[]>([]);
+  const [filteredObjects, setFilteredObjects] = useState<objects[]>([]);
 
   useEffect(() => {
-    if (theme.characters.length && theme.deaths.length && theme.episodes.length && theme.quotes.length) {
+    if (state.characters.length && state.deaths.length && state.episodes.length && state.quotes.length) {
       setDataLoaded(true);
     }
-  }, [theme]);
+  }, [state]);
+
+  useEffect(() => {
+    if (searchParamType) {
+      setFilteredObjects(filterObjects(searchParamType, objects, filter));
+    }
+  }, [filter, objects, searchParamType]);
 
   function updateObjects(e: React.ChangeEvent<HTMLSelectElement>): void {
     if (e.target.value !== "") {
@@ -68,8 +77,14 @@ const SearchParams = () => {
             ))}
           </select>
         </div>
+        <label htmlFor="filterObjects" className="search-param-type-label">
+          Filter
+        </label>
+        <div id="filterObjects" className="filter-wrapper">
+          <input type="text" onInput={(e) => setFilter(e.currentTarget.value)} />
+        </div>
       </form>
-      {searchParamType ? <Results type={searchParamType} objects={objects} /> : <></>}
+      {searchParamType ? <Results type={searchParamType} objects={filteredObjects} /> : <></>}
     </div>
   );
 };
