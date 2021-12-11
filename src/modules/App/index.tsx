@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 
 import { ThemeAction } from "library/common/reducers/theme/theme-type";
 import { changeTheme } from "library/common/actions/ThemeActions";
+import { Theme } from "library/common/constants/theme";
 
 import CharacterDetails from "library/common/components/Details/Character";
 import EpisodeDetails from "library/common/components/Details/Episode";
@@ -13,6 +14,7 @@ import QuoteDetails from "library/common/components/Details/Quote";
 import RandomCharacter from "library/common/components/RandomInfo/Character";
 import RandomDeath from "library/common/components/RandomInfo/Death";
 import RandomQuote from "library/common/components/RandomInfo/Quote";
+import ScrollButton from "library/common/components/ScrollButton";
 import ThemeToggle from "library/common/components/ThemeToggle";
 import Header from "library/common/components/Header";
 import SearchParams from "modules/SearchParams";
@@ -20,7 +22,6 @@ import { IAppState } from "main/store/type";
 import BreakingBadApi from "main/api";
 
 import "./appStyles.scss";
-import { Theme } from "library/common/constants/theme";
 
 const api = BreakingBadApi.getInstance();
 
@@ -40,6 +41,7 @@ const App = () => {
           <header>
             <Header />
           </header>
+          <ScrollButton />
           <Switch>
             <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />
             <Route path="/deaths/random" render={(props) => <RandomDeath {...props} key={Date.now()} />} />

@@ -1,0 +1,15 @@
+@import "resources/styles/variables";
+
+#scrollToTopBtn {
+  background-color: $breakingBadGreen;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 48px;
+  width: 48px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
