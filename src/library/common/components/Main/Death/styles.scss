@@ -10,11 +10,33 @@
 
   span.death {
     font-size: xx-large;
+    position: relative;
+  }
+
+  span.death::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    @include themed() {
+      background-color: t($text);
+    }
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   span.death:hover {
     @include themed() {
       color: t($text);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    span.death:hover::before {
+      left: 0;
+      right: auto;
+      width: 100%;
     }
   }
 
