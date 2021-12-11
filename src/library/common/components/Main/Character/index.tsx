@@ -14,9 +14,13 @@ const Character: FunctionComponent<character & { pathname: string }> = (props) =
       <figure>
         <img src={img} alt={name} />
         <figcaption>
-          <Link to={pathname}>
+          {pathname ? (
+            <Link to={pathname}>
+              <p>{name}</p>
+            </Link>
+          ) : (
             <p>{name}</p>
-          </Link>
+          )}
         </figcaption>
         {birthday ? <p>Birthday: {birthday}</p> : <></>}
         {occupation ? <p>Occupation: {mapArray(occupation)}</p> : <></>}

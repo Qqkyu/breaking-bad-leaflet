@@ -9,11 +9,12 @@
   align-items: center;
 
   span.quote {
+    color: $breakingBadGreen;
     font-size: xx-large;
     position: relative;
   }
 
-  span.quote::before {
+  a span.quote::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -26,14 +27,14 @@
     transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  span.quote:hover {
+  a span.quote:hover {
     @include themed() {
       color: t($text);
     }
   }
 
   @media (hover: hover) and (pointer: fine) {
-    span.quote:hover::before {
+    a span.quote:hover::before {
       left: 0;
       right: auto;
       width: 100%;

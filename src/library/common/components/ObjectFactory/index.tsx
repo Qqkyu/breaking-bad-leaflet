@@ -45,7 +45,7 @@ const ObjectFactory: FunctionComponent<props> = ({ type, object, minified }) => 
               appearance={characterObject.appearance}
               portrayed={characterObject.portrayed}
               category={characterObject.category}
-              pathname={pathname}
+              pathname={""}
             />
           )}
         </>
@@ -74,7 +74,7 @@ const ObjectFactory: FunctionComponent<props> = ({ type, object, minified }) => 
               season={deathObject.season}
               episode={deathObject.episode}
               number_of_deaths={deathObject.number_of_deaths}
-              pathname={pathname}
+              pathname={""}
             />
           )}
         </>
@@ -104,7 +104,7 @@ const ObjectFactory: FunctionComponent<props> = ({ type, object, minified }) => 
               air_date={episodeObject.air_date}
               characters={episodeObject.characters}
               series={episodeObject.series}
-              pathname={pathname}
+              pathname={""}
             />
           )}
         </>
@@ -129,7 +129,7 @@ const ObjectFactory: FunctionComponent<props> = ({ type, object, minified }) => 
               quote={quoteObject.quote}
               author={quoteObject.author}
               series={quoteObject.series}
-              pathname={pathname}
+              pathname={""}
             />
           )}
         </>

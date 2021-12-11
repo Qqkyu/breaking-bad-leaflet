@@ -30,7 +30,7 @@
         position: relative;
       }
 
-      p::before {
+      a p::before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -43,14 +43,14 @@
         transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
-      p:hover {
+      a p:hover {
         @include themed() {
           color: t($text);
         }
       }
 
       @media (hover: hover) and (pointer: fine) {
-        p:hover::before {
+        a p:hover::before {
           left: 0;
           right: auto;
           width: 100%;

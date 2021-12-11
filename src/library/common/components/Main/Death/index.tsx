@@ -10,9 +10,13 @@ const Death: FunctionComponent<death & { pathname: string }> = (props) => {
 
   return (
     <div className="death-wrapper">
-      <Link to={pathname}>
+      {pathname ? (
+        <Link to={pathname}>
+          <span className="death">{death}</span>
+        </Link>
+      ) : (
         <span className="death">{death}</span>
-      </Link>
+      )}
       {cause ? <p>Cause: {cause}</p> : <></>}
       {responsible ? <p>Responsible: {responsible}</p> : <></>}
       {last_words ? <p>Last words: {last_words}</p> : <></>}

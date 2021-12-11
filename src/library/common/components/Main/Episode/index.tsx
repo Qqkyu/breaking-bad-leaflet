@@ -11,9 +11,13 @@ const Episode: FunctionComponent<episode & { pathname: string }> = (props) => {
 
   return (
     <div className="episode-wrapper">
-      <Link to={pathname}>
+      {pathname ? (
+        <Link to={pathname}>
+          <span className="episode">{createEpisodeInfo(title, season, episode)}</span>
+        </Link>
+      ) : (
         <span className="episode">{createEpisodeInfo(title, season, episode)}</span>
-      </Link>
+      )}
       {air_date ? <p>Air date: {air_date}</p> : <></>}
       {characters ? <p>Characters: {mapArray(characters)}</p> : <></>}
       {series ? <p>Series: {series}</p> : <></>}

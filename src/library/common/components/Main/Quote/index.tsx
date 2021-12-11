@@ -10,9 +10,13 @@ const Quote: FunctionComponent<quote & { pathname: string }> = (props) => {
 
   return (
     <div className="quote-wrapper">
-      <Link to={pathname}>
+      {pathname ? (
+        <Link to={pathname}>
+          <span className="quote">"{quote}"</span>
+        </Link>
+      ) : (
         <span className="quote">"{quote}"</span>
-      </Link>
+      )}
       {author ? <p>Author: {author}</p> : <></>}
       {series ? <p>Series: {series}</p> : <></>}
     </div>
