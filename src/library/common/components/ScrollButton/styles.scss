@@ -1,6 +1,7 @@
 @import "resources/styles/variables";
 
 #scrollToTopBtn {
+  z-index: 1000;
   background-color: $breakingBadGreen;
   border-radius: 50%;
   border: none;

@@ -8,10 +8,6 @@ import { objects } from "library/common/constants/objects";
 import "./resultsStyles.scss";
 
 const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }> = ({ type, objects }) => {
-  if (!objects.length) {
-    return <h1>No Objects Found</h1>;
-  }
-
   return (
     <div className="results">
       {objects.map((object) => (

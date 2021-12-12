@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 import NavButton from "library/common/components/NavButton";
-import Logo from "resources/images/logo";
+import Logo from "resources/vectors/logo";
 
 import "./styles.scss";
 

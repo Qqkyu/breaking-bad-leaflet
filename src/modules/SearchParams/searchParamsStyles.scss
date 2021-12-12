@@ -57,7 +57,7 @@
 .select-wrapper {
   select {
     @include themed() {
-      background-image: url("/resources/images/dropdown.svg"),
+      background-image: url("/resources/vectors/dropdown.svg"),
         linear-gradient(to bottom, t($linear-gradient-start) 0%, t($linear-gradient-end) 100%);
     }
     appearance: none;

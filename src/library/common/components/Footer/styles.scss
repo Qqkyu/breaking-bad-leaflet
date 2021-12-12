@@ -1,0 +1,46 @@
+@import "resources/styles/variables", "resources/styles/color-themes";
+
+footer {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  div.social-media-links {
+    overflow: hidden;
+    text-align: center;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      display: inline-block;
+      height: 40px;
+      position: relative;
+      transition: 0.2s ease-in;
+      width: 50px;
+      svg {
+        left: 20px;
+        position: absolute;
+        bottom: 5px;
+        height: 30px;
+        width: 30px;
+        path {
+          @include themed() {
+            fill: t($text);
+          }
+        }
+      }
+    }
+    a:hover {
+      transform: translateY(-4px);
+      svg {
+        filter: blur(1px);
+      }
+    }
+  }
+}

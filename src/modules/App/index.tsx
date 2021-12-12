@@ -22,6 +22,7 @@ import { IAppState } from "main/store/type";
 import BreakingBadApi from "main/api";
 
 import "./appStyles.scss";
+import Footer from "library/common/components/Footer";
 
 const api = BreakingBadApi.getInstance();
 
@@ -38,20 +39,21 @@ const App = () => {
       <div className="base">
         <Router>
           <ThemeToggle changeTheme={() => dispatch(changeTheme())} />
-          <header>
-            <Header />
-          </header>
+          <Header />
           <ScrollButton />
-          <Switch>
-            <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />
-            <Route path="/deaths/random" render={(props) => <RandomDeath {...props} key={Date.now()} />} />
-            <Route path="/quotes/random" render={(props) => <RandomQuote {...props} key={Date.now()} />} />
-            <Route path="/characters/:id" component={CharacterDetails} />
-            <Route path="/episodes/:id" component={EpisodeDetails} />
-            <Route path="/deaths/:id" component={DeathDetails} />
-            <Route path="/quotes/:id" component={QuoteDetails} />
-            <Route path="/" component={SearchParams} />
-          </Switch>
+          <section className="main-section">
+            <Switch>
+              <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />
+              <Route path="/deaths/random" render={(props) => <RandomDeath {...props} key={Date.now()} />} />
+              <Route path="/quotes/random" render={(props) => <RandomQuote {...props} key={Date.now()} />} />
+              <Route path="/characters/:id" component={CharacterDetails} />
+              <Route path="/episodes/:id" component={EpisodeDetails} />
+              <Route path="/deaths/:id" component={DeathDetails} />
+              <Route path="/quotes/:id" component={QuoteDetails} />
+              <Route path="/" component={SearchParams} />
+            </Switch>
+          </section>
+          <Footer />
         </Router>
       </div>
     </div>
