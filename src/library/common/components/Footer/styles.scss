@@ -22,10 +22,11 @@ footer {
       height: 40px;
       position: relative;
       transition: 0.2s ease-in;
-      width: 50px;
+      width: 30px;
+      margin: 0 10px;
       svg {
-        left: 20px;
         position: absolute;
+        right: 5px;
         bottom: 5px;
         height: 30px;
         width: 30px;
