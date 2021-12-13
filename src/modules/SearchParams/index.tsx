@@ -25,7 +25,6 @@ const SearchParams = () => {
   const [searchParamType, setSearchParamType] = useState<SearchParamsType | null>(null);
   const [filter, setFilter] = useState<string>("");
   const [objects, setObjects] = useState<objects[]>([]);
-  const [filteredObjects, setFilteredObjects] = useState<objects[]>([]);
 
   useEffect(() => {
     if (state.characters.length && state.deaths.length && state.episodes.length && state.quotes.length) {
@@ -33,16 +32,11 @@ const SearchParams = () => {
     }
   }, [state]);
 
-  useEffect(() => {
-    if (searchParamType) {
-      setFilteredObjects(filterObjects(searchParamType, objects, filter));
-    }
-  }, [filter, objects, searchParamType]);
-
   function updateObjects(e: React.ChangeEvent<HTMLSelectElement>): void {
     if (e.target.value !== "") {
       const newSearchParamType = e.target.value as SearchParamsType;
-      setObjects(data.getDataByType(newSearchParamType));
+      const objects = data.getDataByType(newSearchParamType);
+      setObjects(filterObjects(newSearchParamType, objects, filter));
       setSearchParamType(newSearchParamType);
     } else {
       setObjects([]);
@@ -84,7 +78,7 @@ const SearchParams = () => {
           <input type="text" onInput={(e) => setFilter(e.currentTarget.value)} />
         </div>
       </form>
-      {searchParamType ? <Results type={searchParamType} objects={filteredObjects} /> : <></>}
+      {searchParamType ? <Results type={searchParamType} objects={objects} /> : <></>}
     </div>
   );
 };

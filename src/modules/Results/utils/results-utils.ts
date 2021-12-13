@@ -1,5 +1,11 @@
 import { SearchParamsType } from "library/common/constants/searchParams";
 import { ResultsProps } from "modules/Results/index";
+import { objects } from "library/common/constants/objects";
+
+export function generateKey(type: SearchParamsType, obj: objects): string {
+  const mainAttr = getMainAttr(type);
+  return mainAttr + obj[mainAttr];
+}
 
 export function areEqual(
   prevProps: Readonly<React.PropsWithChildren<ResultsProps>>,
@@ -14,7 +20,7 @@ export function areEqual(
   return prevIds.every((val, i) => val === nextIds[i]);
 }
 
-function getMainAttr(type: SearchParamsType) {
+function getMainAttr(type: SearchParamsType): string {
   switch (type) {
     case SearchParamsType.Character:
       return "char_id";
