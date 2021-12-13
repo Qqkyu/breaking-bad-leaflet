@@ -1,4 +1,4 @@
-import { FunctionComponent, memo } from "react";
+import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 import { death } from "library/common/components/Main/Death/death";
@@ -27,4 +27,4 @@ const Death: FunctionComponent<death & { pathname: string }> = (props) => {
   );
 };
 
-export default memo(Death);
+export default Death;

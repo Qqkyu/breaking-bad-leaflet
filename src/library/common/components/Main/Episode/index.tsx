@@ -1,8 +1,9 @@
-import { FunctionComponent, memo } from "react";
+import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
+import { createEpisodeInfo } from "library/common/components/Main/Episode/utils/episode-utils";
 import { episode } from "library/common/components/Main/Episode/episode";
-import { createEpisodeInfo, mapArray } from "library/utilities/utils";
+import { mapArray } from "library/utilities/utils";
 
 import "./styles.scss";
 
@@ -25,4 +26,4 @@ const Episode: FunctionComponent<episode & { pathname: string }> = (props) => {
   );
 };
 
-export default memo(Episode);
+export default Episode;

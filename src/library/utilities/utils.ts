@@ -1,3 +1,4 @@
+import { createEpisodeInfo } from "library/common/components/Main/Episode/utils/episode-utils";
 import { character } from "library/common/components/Main/Character/character";
 import { episode } from "library/common/components/Main/Episode/episode";
 import { death } from "library/common/components/Main/Death/death";
@@ -18,10 +19,6 @@ export function mapArray(entries: (string | number)[]) {
     mappedArray.push(", " + entries[i]);
   }
   return mappedArray;
-}
-
-export function createEpisodeInfo(title: string, season: number, episode: number) {
-  return `${title} (S${season}.E${episode})`;
 }
 
 export function filterObjects(type: SearchParamsType, objects: objects[], filter: string) {

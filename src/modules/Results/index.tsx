@@ -1,13 +1,19 @@
 import { FunctionComponent, memo } from "react";
 
 import ObjectFactory from "library/common/components/ObjectFactory";
-
 import { SearchParamsType } from "library/common/constants/searchParams";
 import { objects } from "library/common/constants/objects";
+import { areEqual } from "modules/Results/utils/results-utils";
 
 import "./resultsStyles.scss";
 
-const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }> = ({ type, objects }) => {
+export interface ResultsProps {
+  type: SearchParamsType;
+  objects: objects[];
+}
+
+const Results: FunctionComponent<ResultsProps> = ({ type, objects }) => {
+  console.log("allo");
   return (
     <div className="results">
       {objects.map((object) => (
@@ -17,4 +23,4 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
   );
 };
 
-export default memo(Results);
+export default memo(Results, areEqual);

@@ -1,4 +1,4 @@
-import { FunctionComponent, memo } from "react";
+import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
 import { character } from "library/common/components/Main/Character/character";
@@ -33,4 +33,4 @@ const Character: FunctionComponent<character & { pathname: string }> = (props) =
   );
 };
 
-export default memo(Character);
+export default Character;
