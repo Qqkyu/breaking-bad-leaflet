@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 
 import { ThemeAction } from "library/common/reducers/theme/theme-type";
 import { changeTheme } from "library/common/actions/ThemeActions";
+import { scrollToTop } from "library/utilities/behavior-utils";
 import { Theme } from "library/common/constants/theme";
 
 import CharacterDetails from "library/common/components/Details/Character";
@@ -40,7 +41,7 @@ const App = () => {
         <Router>
           <ThemeToggle changeTheme={() => dispatch(changeTheme())} />
           <Header />
-          <ScrollButton />
+          <ScrollButton scrollToTop={scrollToTop} />
           <section className="main-section">
             <Switch>
               <Route path="/characters/random" render={(props) => <RandomCharacter {...props} key={Date.now()} />} />

@@ -101,3 +101,17 @@
 - Performance boost by memoizing the result
 
 ##### Files: modules/Results/index.tsx, modules/Results/utils/results-utils.ts
+
+### Strategy:
+
+- Encapsulating algorithms and injecting them into components
+- Good separation layer between the component and the internals of the algorithm
+- ThemeToggle:
+  - Any function can be chosen to change theme of the page
+  - Currently redux is used but later on other library and logic can be chosen for theme
+  - Functionality is passed as props and used on "click" event
+- ScrollButton:
+  - Any function can be chosen to scroll page to the top
+  - Functionality is passed as props and used on "click" event
+
+##### Files: modules/App/index.tsx, library/common/components/ThemeToggle/index.tsx, library/common/components/ScrollButton/index.tsx

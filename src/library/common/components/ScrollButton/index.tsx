@@ -1,14 +1,11 @@
+import { FunctionComponent } from "react";
 import "./styles.scss";
 
-const ScrollButton = () => {
-  function scrollToTop() {
-    const rootElement = document.documentElement;
-    rootElement.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+interface ScrollButtonProps {
+  scrollToTop: () => void;
+}
 
+const ScrollButton: FunctionComponent<ScrollButtonProps> = ({ scrollToTop }) => {
   return (
     <button id="scrollToTopBtn" onClick={() => scrollToTop()}>
       ☝🏻
