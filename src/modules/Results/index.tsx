@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, memo } from "react";
 
 import ObjectFactory from "library/common/components/ObjectFactory";
 
@@ -17,4 +17,4 @@ const Results: FunctionComponent<{ type: SearchParamsType; objects: objects[] }>
   );
 };
 
-export default Results;
+export default memo(Results);

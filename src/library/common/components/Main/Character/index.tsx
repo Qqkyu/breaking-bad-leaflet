@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, memo } from "react";
 import { Link } from "react-router-dom";
 
 import { character } from "library/common/components/Main/Character/character";
@@ -8,7 +8,6 @@ import "./styles.scss";
 
 const Character: FunctionComponent<character & { pathname: string }> = (props) => {
   const { name, birthday, occupation, img, status, nickname, appearance, portrayed, category, pathname } = props;
-
   return (
     <div className="figure-wrapper">
       <figure>
@@ -34,4 +33,4 @@ const Character: FunctionComponent<character & { pathname: string }> = (props) =
   );
 };
 
-export default Character;
+export default memo(Character);

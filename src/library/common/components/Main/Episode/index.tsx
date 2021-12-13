@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, memo } from "react";
 import { Link } from "react-router-dom";
 
 import { episode } from "library/common/components/Main/Episode/episode";
@@ -25,4 +25,4 @@ const Episode: FunctionComponent<episode & { pathname: string }> = (props) => {
   );
 };
 
-export default Episode;
+export default memo(Episode);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 
 import Loader from "library/common/components/Loader";
 import ObjectFactory from "library/common/components/ObjectFactory";
@@ -37,4 +37,4 @@ const DeathDetails = ({ match }) => {
   );
 };
 
-export default DeathDetails;
+export default memo(DeathDetails);

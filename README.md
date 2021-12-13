@@ -92,3 +92,12 @@
 - Reusable ObjectFactory component which results in significant code reduction (e.g. RandomInfo and Details components)
 
 ##### Files: library/common/components/ObjectFactory/index.tsx, modules/Results/index.tsx, library/common/components/RandomInfo, library/common/components/Details
+
+### Decorator:
+
+- Majority of components render the same result given the same props
+- Attach new behavior to those components by placing them inside special wrapper object that contain special behavior
+- React solution - wrap them in React.memo which will cause react to skip rerendering the component and reusing the last rendered result
+- Performance boost by memoizing the result
+
+##### Files: modules/Results/index.tsx, library/common/components/RandomInfo/Character/index.tsx

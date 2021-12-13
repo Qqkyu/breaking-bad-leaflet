@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, memo } from "react";
 import { Link } from "react-router-dom";
 
 import { quote } from "library/common/components/Main/Quote/quote";
@@ -23,4 +23,4 @@ const Quote: FunctionComponent<quote & { pathname: string }> = (props) => {
   );
 };
 
-export default Quote;
+export default memo(Quote);
