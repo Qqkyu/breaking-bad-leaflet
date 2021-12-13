@@ -1,8 +1,9 @@
 import { FunctionComponent, useEffect, useState } from "react";
 
-import Loader from "library/common/components/Loader";
-import ObjectFactory from "library/common/components/ObjectFactory";
+import { setCorrectDate } from "library/common/components/RandomInfo/Character/utils/character-utils";
 import { character } from "library/common/components/Main/Character/character";
+import ObjectFactory from "library/common/components/ObjectFactory";
+import Loader from "library/common/components/Loader";
 import { SearchParamsType } from "library/common/constants/searchParams";
 import BreakingBadApi from "main/api";
 
@@ -19,6 +20,7 @@ const RandomCharacter: FunctionComponent = () => {
 
   async function fetchRandomCharacter(): Promise<void> {
     const characterData = await api.fetchRandomCharacter();
+    setCorrectDate(characterData);
     setCharacter(characterData);
   }
 
