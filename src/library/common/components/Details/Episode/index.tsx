@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 
 import Loader from "library/common/components/Loader";
 import ObjectFactory from "library/common/components/ObjectFactory";
 import { episode } from "library/common/components/Main/Episode/episode";
-
 import { SearchParamsType } from "library/common/constants/searchParams";
 import BreakingBadApi from "main/api";
 
@@ -11,7 +10,11 @@ import "./styles.scss";
 
 const api = BreakingBadApi.getInstance();
 
-const EpisodeDetails = ({ match }) => {
+interface EpisodeDetailsProps {
+  match: any;
+}
+
+const EpisodeDetails: FunctionComponent<EpisodeDetailsProps> = ({ match }) => {
   const [episode, setEpisode] = useState<episode | undefined>(undefined);
 
   useEffect(() => {

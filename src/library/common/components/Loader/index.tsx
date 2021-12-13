@@ -1,6 +1,8 @@
+import { FunctionComponent } from "react";
+
 import "./styles.scss";
 
-const Loader = () => {
+const Loader: FunctionComponent = () => {
   return (
     <div className="spinner">
       <div></div>

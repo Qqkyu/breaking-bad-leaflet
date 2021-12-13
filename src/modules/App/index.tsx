@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
@@ -27,7 +27,7 @@ import Footer from "library/common/components/Footer";
 
 const api = BreakingBadApi.getInstance();
 
-const App = () => {
+const App: FunctionComponent = () => {
   const theme = useSelector((state: IAppState) => state.theme.theme);
   const dispatch: Dispatch<ThemeAction> = useDispatch();
 

@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import Loader from "library/common/components/Loader";
 import { SearchParamsType } from "library/common/constants/searchParams";
 import { AvailableTypes } from "library/common/constants/searchParams";
 import { objects } from "library/common/constants/objects";
+import { filterObjects } from "library/utilities/utils";
+import Loader from "library/common/components/Loader";
 import { IAppState } from "main/store/type";
 import Results from "modules/Results";
 import Data from "main/data";
 
 import "./searchParamsStyles.scss";
-import { filterObjects } from "library/utilities/utils";
 
 const data = Data.getInstance();
 
-const SearchParams = () => {
+const SearchParams: FunctionComponent = () => {
   const state = useSelector((state: IAppState) => ({
     ...state.characters,
     ...state.deaths,
@@ -31,6 +31,14 @@ const SearchParams = () => {
       setDataLoaded(true);
     }
   }, [state]);
+
+  useEffect(() => {
+    if (searchParamType) {
+      const objects = data.getDataByType(searchParamType);
+      setObjects(filterObjects(searchParamType, objects, filter));
+      setSearchParamType(searchParamType);
+    }
+  }, [filter, searchParamType]);
 
   function updateObjects(e: React.ChangeEvent<HTMLSelectElement>): void {
     if (e.target.value !== "") {

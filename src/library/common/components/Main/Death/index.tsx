@@ -5,7 +5,11 @@ import { death } from "library/common/components/Main/Death/death";
 
 import "./styles.scss";
 
-const Death: FunctionComponent<death & { pathname: string }> = (props) => {
+interface DeathProps extends death {
+  pathname: string;
+}
+
+const Death: FunctionComponent<DeathProps> = (props) => {
   const { death, cause, responsible, last_words, season, episode, number_of_deaths, pathname } = props;
 
   return (

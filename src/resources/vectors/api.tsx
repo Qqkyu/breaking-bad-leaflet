@@ -1,4 +1,6 @@
-const Api = () => {
+import { FunctionComponent } from "react";
+
+const Api: FunctionComponent = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

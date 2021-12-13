@@ -11,13 +11,15 @@ import { death } from "library/common/components/Main/Death/death";
 import { objects } from "library/common/constants/objects";
 import { SearchParamsType } from "library/common/constants/searchParams";
 
-interface props {
+import "./styles.scss";
+
+interface ObjectFactoryProps {
   type: SearchParamsType;
   object: objects;
   minified: boolean;
 }
 
-const ObjectFactory: FunctionComponent<props> = ({ type, object, minified }) => {
+const ObjectFactory: FunctionComponent<ObjectFactoryProps> = ({ type, object, minified }) => {
   switch (type) {
     case SearchParamsType.Character: {
       const characterObject = object as character;

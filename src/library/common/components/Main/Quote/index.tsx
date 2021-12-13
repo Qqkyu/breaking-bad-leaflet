@@ -5,7 +5,11 @@ import { quote } from "library/common/components/Main/Quote/quote";
 
 import "./styles.scss";
 
-const Quote: FunctionComponent<quote & { pathname: string }> = (props) => {
+interface QuoteProps extends quote {
+  pathname: string;
+}
+
+const Quote: FunctionComponent<QuoteProps> = (props) => {
   const { quote, author, series, pathname } = props;
 
   return (

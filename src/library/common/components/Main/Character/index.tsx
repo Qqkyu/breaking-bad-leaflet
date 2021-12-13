@@ -6,8 +6,13 @@ import { mapArray } from "library/utilities/utils";
 
 import "./styles.scss";
 
-const Character: FunctionComponent<character & { pathname: string }> = (props) => {
+interface CharacterProps extends character {
+  pathname: string;
+}
+
+const Character: FunctionComponent<CharacterProps> = (props) => {
   const { name, birthday, occupation, img, status, nickname, appearance, portrayed, category, pathname } = props;
+
   return (
     <div className="figure-wrapper">
       <figure>

@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 
 import "./styles.scss";
 
-const NavButton: FunctionComponent<{ pathname: string; text: string }> = ({ pathname, text }) => {
+interface NavButtonProps {
+  pathname: string;
+  text: string;
+}
+
+const NavButton: FunctionComponent<NavButtonProps> = ({ pathname, text }) => {
   return (
     <Link to={pathname}>
       <button className="nav-button">{text}</button>

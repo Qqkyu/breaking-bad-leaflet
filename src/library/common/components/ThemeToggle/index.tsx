@@ -2,7 +2,11 @@ import { FunctionComponent } from "react";
 
 import "./styles.scss";
 
-const ThemeToggle: FunctionComponent<{ changeTheme: () => void }> = ({ changeTheme }) => {
+interface ThemeToggleProps {
+  changeTheme: () => void;
+}
+
+const ThemeToggle: FunctionComponent<ThemeToggleProps> = ({ changeTheme }) => {
   return (
     <div className="wrapper">
       <input type="checkbox" name="checkbox" className="switch" onClick={() => changeTheme()} />

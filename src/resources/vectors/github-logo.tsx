@@ -1,4 +1,6 @@
-const GithubLogo = () => {
+import { FunctionComponent } from "react";
+
+const GithubLogo: FunctionComponent = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

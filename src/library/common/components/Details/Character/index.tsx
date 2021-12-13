@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 
 import Loader from "library/common/components/Loader";
 import ObjectFactory from "library/common/components/ObjectFactory";
 import { character } from "library/common/components/Main/Character/character";
-
 import { SearchParamsType } from "library/common/constants/searchParams";
 import BreakingBadApi from "main/api";
 
@@ -11,7 +10,11 @@ import "./styles.scss";
 
 const api = BreakingBadApi.getInstance();
 
-const CharacterDetails = ({ match }) => {
+interface CharacterDetailsProps {
+  match: any;
+}
+
+const CharacterDetails: FunctionComponent<CharacterDetailsProps> = ({ match }) => {
   const [character, setCharacter] = useState<character | undefined>(undefined);
 
   useEffect(() => {

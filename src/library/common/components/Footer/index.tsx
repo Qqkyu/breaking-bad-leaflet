@@ -1,10 +1,12 @@
+import { FunctionComponent } from "react";
+
 import WikipediaLogo from "resources/vectors/wikipedia-logo";
 import GithubLogo from "resources/vectors/github-logo";
 import Api from "resources/vectors/api";
 
 import "./styles.scss";
 
-const Footer = () => {
+const Footer: FunctionComponent = () => {
   return (
     <footer>
       <div className="social-media-links">

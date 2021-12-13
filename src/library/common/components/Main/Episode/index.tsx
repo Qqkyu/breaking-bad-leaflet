@@ -7,7 +7,11 @@ import { mapArray } from "library/utilities/utils";
 
 import "./styles.scss";
 
-const Episode: FunctionComponent<episode & { pathname: string }> = (props) => {
+interface EpisodeProps extends episode {
+  pathname: string;
+}
+
+const Episode: FunctionComponent<EpisodeProps> = (props) => {
   const { title, season, episode, air_date, characters, series, pathname } = props;
 
   return (
